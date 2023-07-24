@@ -1,0 +1,1054 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-fiche-heading" data-cy="FicheCreateUpdateHeading">Create or edit a Fiche</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_datemaj">Datemaj</label>
+          <div class="input-group">
+            <input
+              id="field_datemaj"
+              data-cy="datemaj"
+              type="text"
+              class="form-control"
+              name="datemaj"
+              ngbDatepicker
+              #datemajDp="ngbDatepicker"
+              formControlName="datemaj"
+            />
+            <button type="button" class="btn btn-secondary" (click)="datemajDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+          <div *ngIf="editForm.get('datemaj')!.invalid && (editForm.get('datemaj')!.dirty || editForm.get('datemaj')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('datemaj')?.errors?.required"> This field is required. </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_type_observation">Type Observation</label>
+          <input
+            type="text"
+            class="form-control"
+            name="type_observation"
+            id="field_type_observation"
+            data-cy="type_observation"
+            formControlName="type_observation"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_identifiant_registre">Identifiant Registre</label>
+          <input
+            type="text"
+            class="form-control"
+            name="identifiant_registre"
+            id="field_identifiant_registre"
+            data-cy="identifiant_registre"
+            formControlName="identifiant_registre"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_date_enregistrement">Date Enregistrement</label>
+          <div class="input-group">
+            <input
+              id="field_date_enregistrement"
+              data-cy="date_enregistrement"
+              type="text"
+              class="form-control"
+              name="date_enregistrement"
+              ngbDatepicker
+              #date_enregistrementDp="ngbDatepicker"
+              formControlName="date_enregistrement"
+            />
+            <button type="button" class="btn btn-secondary" (click)="date_enregistrementDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_sexe">Sexe</label>
+          <select class="form-control" name="sexe" formControlName="sexe" id="field_sexe" data-cy="sexe">
+            <option [ngValue]="null"></option>
+            <option *ngFor="let esexe of esexeValues" [value]="esexe">esexe</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_date_naissance">Date Naissance</label>
+          <div class="input-group">
+            <input
+              id="field_date_naissance"
+              data-cy="date_naissance"
+              type="text"
+              class="form-control"
+              name="date_naissance"
+              ngbDatepicker
+              #date_naissanceDp="ngbDatepicker"
+              formControlName="date_naissance"
+            />
+            <button type="button" class="btn btn-secondary" (click)="date_naissanceDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_statut">Statut</label>
+          <select class="form-control" name="statut" formControlName="statut" id="field_statut" data-cy="statut">
+            <option [ngValue]="null"></option>
+            <option *ngFor="let estatut of estatutValues" [value]="estatut">estatut</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_date_deces">Date Deces</label>
+          <div class="input-group">
+            <input
+              id="field_date_deces"
+              data-cy="date_deces"
+              type="text"
+              class="form-control"
+              name="date_deces"
+              ngbDatepicker
+              #date_decesDp="ngbDatepicker"
+              formControlName="date_deces"
+            />
+            <button type="button" class="btn btn-secondary" (click)="date_decesDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_circonstance_deces">Circonstance Deces</label>
+          <select
+            class="form-control"
+            name="circonstance_deces"
+            formControlName="circonstance_deces"
+            id="field_circonstance_deces"
+            data-cy="circonstance_deces"
+          >
+            <option [ngValue]="null"></option>
+            <option *ngFor="let ecirconstance of ecirconstanceValues" [value]="ecirconstance">ecirconstance</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_autre_circonstance_deces">Autre Circonstance Deces</label>
+          <input
+            type="text"
+            class="form-control"
+            name="autre_circonstance_deces"
+            id="field_autre_circonstance_deces"
+            data-cy="autre_circonstance_deces"
+            formControlName="autre_circonstance_deces"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_lieu_deces">Lieu Deces</label>
+          <select class="form-control" name="lieu_deces" formControlName="lieu_deces" id="field_lieu_deces" data-cy="lieu_deces">
+            <option [ngValue]="null"></option>
+            <option *ngFor="let elieudeces of elieudecesValues" [value]="elieudeces">elieudeces</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_consanguinite">Consanguinite</label>
+          <select
+            class="form-control"
+            name="consanguinite"
+            formControlName="consanguinite"
+            id="field_consanguinite"
+            data-cy="consanguinite"
+          >
+            <option [ngValue]="null"></option>
+            <option *ngFor="let econsanguinite of econsanguiniteValues" [value]="econsanguinite">econsanguinite</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_origine_geo_pere_gouvernorat">Origine Geo Pere Gouvernorat</label>
+          <select
+            class="form-control"
+            name="origine_geo_pere_gouvernorat"
+            formControlName="origine_geo_pere_gouvernorat"
+            id="field_origine_geo_pere_gouvernorat"
+            data-cy="origine_geo_pere_gouvernorat"
+          >
+            <option [ngValue]="null"></option>
+            <option *ngFor="let egouvernorat of egouvernoratValues" [value]="egouvernorat">egouvernorat</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_origine_geo_mere_gouvernorat">Origine Geo Mere Gouvernorat</label>
+          <select
+            class="form-control"
+            name="origine_geo_mere_gouvernorat"
+            formControlName="origine_geo_mere_gouvernorat"
+            id="field_origine_geo_mere_gouvernorat"
+            data-cy="origine_geo_mere_gouvernorat"
+          >
+            <option [ngValue]="null"></option>
+            <option *ngFor="let egouvernoratmere of egouvernoratmereValues" [value]="egouvernoratmere">egouvernoratmere</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_origine_geo_pere_deleguation">Origine Geo Pere Deleguation</label>
+          <input
+            type="text"
+            class="form-control"
+            name="origine_geo_pere_deleguation"
+            id="field_origine_geo_pere_deleguation"
+            data-cy="origine_geo_pere_deleguation"
+            formControlName="origine_geo_pere_deleguation"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_origine_geo_mere_deleguation">Origine Geo Mere Deleguation</label>
+          <input
+            type="text"
+            class="form-control"
+            name="origine_geo_mere_deleguation"
+            id="field_origine_geo_mere_deleguation"
+            data-cy="origine_geo_mere_deleguation"
+            formControlName="origine_geo_mere_deleguation"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_couverture_sociale">Couverture Sociale</label>
+          <select
+            class="form-control"
+            name="couverture_sociale"
+            formControlName="couverture_sociale"
+            id="field_couverture_sociale"
+            data-cy="couverture_sociale"
+          >
+            <option [ngValue]="null"></option>
+            <option *ngFor="let ecouverture of ecouvertureValues" [value]="ecouverture">ecouverture</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_autre_couverture_sociale">Autre Couverture Sociale</label>
+          <input
+            type="text"
+            class="form-control"
+            name="autre_couverture_sociale"
+            id="field_autre_couverture_sociale"
+            data-cy="autre_couverture_sociale"
+            formControlName="autre_couverture_sociale"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_activite">Activite</label>
+          <select class="form-control" name="activite" formControlName="activite" id="field_activite" data-cy="activite">
+            <option [ngValue]="null"></option>
+            <option *ngFor="let eactivite of eactiviteValues" [value]="eactivite">eactivite</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_btravail">Btravail</label>
+          <input type="checkbox" class="form-check" name="btravail" id="field_btravail" data-cy="btravail" formControlName="btravail" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_travail">Travail</label>
+          <input type="text" class="form-control" name="travail" id="field_travail" data-cy="travail" formControlName="travail" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_scolarise">Scolarise</label>
+          <input type="checkbox" class="form-check" name="scolarise" id="field_scolarise" data-cy="scolarise" formControlName="scolarise" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_type_scolarise">Type Scolarise</label>
+          <select
+            class="form-control"
+            name="type_scolarise"
+            formControlName="type_scolarise"
+            id="field_type_scolarise"
+            data-cy="type_scolarise"
+          >
+            <option [ngValue]="null"></option>
+            <option *ngFor="let escolarisetype of escolarisetypeValues" [value]="escolarisetype">escolarisetype</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_niveau_scolarisation">Niveau Scolarisation</label>
+          <select
+            class="form-control"
+            name="niveau_scolarisation"
+            formControlName="niveau_scolarisation"
+            id="field_niveau_scolarisation"
+            data-cy="niveau_scolarisation"
+          >
+            <option [ngValue]="null"></option>
+            <option *ngFor="let eniveauscolarisation of eniveauscolarisationValues" [value]="eniveauscolarisation">
+              eniveauscolarisation
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_cas_familiaux">Cas Familiaux</label>
+          <select
+            class="form-control"
+            name="cas_familiaux"
+            formControlName="cas_familiaux"
+            id="field_cas_familiaux"
+            data-cy="cas_familiaux"
+          >
+            <option [ngValue]="null"></option>
+            <option *ngFor="let ecasfamiliaux of ecasfamiliauxValues" [value]="ecasfamiliaux">ecasfamiliaux</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_nbcasconfirme">Nbcasconfirme</label>
+          <input
+            type="number"
+            class="form-control"
+            name="nbcasconfirme"
+            id="field_nbcasconfirme"
+            data-cy="nbcasconfirme"
+            formControlName="nbcasconfirme"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_nbcassuspectes">Nbcassuspectes</label>
+          <input
+            type="number"
+            class="form-control"
+            name="nbcassuspectes"
+            id="field_nbcassuspectes"
+            data-cy="nbcassuspectes"
+            formControlName="nbcassuspectes"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_nbcasdecedes">Nbcasdecedes</label>
+          <input
+            type="number"
+            class="form-control"
+            name="nbcasdecedes"
+            id="field_nbcasdecedes"
+            data-cy="nbcasdecedes"
+            formControlName="nbcasdecedes"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_deces_en_bas_age">Deces En Bas Age</label>
+          <select
+            class="form-control"
+            name="deces_en_bas_age"
+            formControlName="deces_en_bas_age"
+            id="field_deces_en_bas_age"
+            data-cy="deces_en_bas_age"
+          >
+            <option [ngValue]="null"></option>
+            <option *ngFor="let edecesbasage of edecesbasageValues" [value]="edecesbasage">edecesbasage</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_nbcas_deces_age_bas">Nbcas Deces Age Bas</label>
+          <input
+            type="number"
+            class="form-control"
+            name="nbcas_deces_age_bas"
+            id="field_nbcas_deces_age_bas"
+            data-cy="nbcas_deces_age_bas"
+            formControlName="nbcas_deces_age_bas"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_circonstances_decouverte">Circonstances Decouverte</label>
+          <select
+            class="form-control"
+            name="circonstances_decouverte"
+            formControlName="circonstances_decouverte"
+            id="field_circonstances_decouverte"
+            data-cy="circonstances_decouverte"
+          >
+            <option [ngValue]="null"></option>
+            <option *ngFor="let ecircondecouverte of ecircondecouverteValues" [value]="ecircondecouverte">ecircondecouverte</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_age_aux_premiers_symptomes">Age Aux Premiers Symptomes</label>
+          <select
+            class="form-control"
+            name="age_aux_premiers_symptomes"
+            formControlName="age_aux_premiers_symptomes"
+            id="field_age_aux_premiers_symptomes"
+            data-cy="age_aux_premiers_symptomes"
+          >
+            <option [ngValue]="null"></option>
+            <option *ngFor="let eage_premier_symptome of eage_premier_symptomeValues" [value]="eage_premier_symptome">
+              eage_premier_symptome
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_an_age_premiers_symptomes">An Age Premiers Symptomes</label>
+          <input
+            type="number"
+            class="form-control"
+            name="an_age_premiers_symptomes"
+            id="field_an_age_premiers_symptomes"
+            data-cy="an_age_premiers_symptomes"
+            formControlName="an_age_premiers_symptomes"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_mois_age_premiers_symptomes">Mois Age Premiers Symptomes</label>
+          <input
+            type="number"
+            class="form-control"
+            name="mois_age_premiers_symptomes"
+            id="field_mois_age_premiers_symptomes"
+            data-cy="mois_age_premiers_symptomes"
+            formControlName="mois_age_premiers_symptomes"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_jours_premiers_symptomes">Jours Premiers Symptomes</label>
+          <input
+            type="number"
+            class="form-control"
+            name="jours_premiers_symptomes"
+            id="field_jours_premiers_symptomes"
+            data-cy="jours_premiers_symptomes"
+            formControlName="jours_premiers_symptomes"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_age_premiere_consultation">Age Premiere Consultation</label>
+          <select
+            class="form-control"
+            name="age_premiere_consultation"
+            formControlName="age_premiere_consultation"
+            id="field_age_premiere_consultation"
+            data-cy="age_premiere_consultation"
+          >
+            <option [ngValue]="null"></option>
+            <option *ngFor="let eagepremiereconsultation of eagepremiereconsultationValues" [value]="eagepremiereconsultation">
+              eagepremiereconsultation
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_an_age_premiere_consultation">An Age Premiere Consultation</label>
+          <input
+            type="number"
+            class="form-control"
+            name="an_age_premiere_consultation"
+            id="field_an_age_premiere_consultation"
+            data-cy="an_age_premiere_consultation"
+            formControlName="an_age_premiere_consultation"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_mois_age_premiere_consultation">Mois Age Premiere Consultation</label>
+          <input
+            type="number"
+            class="form-control"
+            name="mois_age_premiere_consultation"
+            id="field_mois_age_premiere_consultation"
+            data-cy="mois_age_premiere_consultation"
+            formControlName="mois_age_premiere_consultation"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_jours_premiere_consultation">Jours Premiere Consultation</label>
+          <input
+            type="number"
+            class="form-control"
+            name="jours_premiere_consultation"
+            id="field_jours_premiere_consultation"
+            data-cy="jours_premiere_consultation"
+            formControlName="jours_premiere_consultation"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_date_derniere_evaluation">Date Derniere Evaluation</label>
+          <div class="input-group">
+            <input
+              id="field_date_derniere_evaluation"
+              data-cy="date_derniere_evaluation"
+              type="text"
+              class="form-control"
+              name="date_derniere_evaluation"
+              ngbDatepicker
+              #date_derniere_evaluationDp="ngbDatepicker"
+              formControlName="date_derniere_evaluation"
+            />
+            <button type="button" class="btn btn-secondary" (click)="date_derniere_evaluationDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_date_diagnostic">Date Diagnostic</label>
+          <div class="input-group">
+            <input
+              id="field_date_diagnostic"
+              data-cy="date_diagnostic"
+              type="text"
+              class="form-control"
+              name="date_diagnostic"
+              ngbDatepicker
+              #date_diagnosticDp="ngbDatepicker"
+              formControlName="date_diagnostic"
+            />
+            <button type="button" class="btn btn-secondary" (click)="date_diagnosticDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_handicap_mental">Handicap Mental</label>
+          <select
+            class="form-control"
+            name="handicap_mental"
+            formControlName="handicap_mental"
+            id="field_handicap_mental"
+            data-cy="handicap_mental"
+          >
+            <option [ngValue]="null"></option>
+            <option *ngFor="let ehandicapmental of ehandicapmentalValues" [value]="ehandicapmental">ehandicapmental</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_qi">Qi</label>
+          <select class="form-control" name="qi" formControlName="qi" id="field_qi" data-cy="qi">
+            <option [ngValue]="null"></option>
+            <option *ngFor="let eQI of eQIValues" [value]="eQI">eQI</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_handicap_moteur">Handicap Moteur</label>
+          <select
+            class="form-control"
+            name="handicap_moteur"
+            formControlName="handicap_moteur"
+            id="field_handicap_moteur"
+            data-cy="handicap_moteur"
+          >
+            <option [ngValue]="null"></option>
+            <option *ngFor="let eMoteur of eMoteurValues" [value]="eMoteur">eMoteur</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_hadicap_moteur_grade">Hadicap Moteur Grade</label>
+          <select
+            class="form-control"
+            name="hadicap_moteur_grade"
+            formControlName="hadicap_moteur_grade"
+            id="field_hadicap_moteur_grade"
+            data-cy="hadicap_moteur_grade"
+          >
+            <option [ngValue]="null"></option>
+            <option *ngFor="let egrade of egradeValues" [value]="egrade">egrade</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_deficit_neurosensoriel">Deficit Neurosensoriel</label>
+          <select
+            class="form-control"
+            name="deficit_neurosensoriel"
+            formControlName="deficit_neurosensoriel"
+            id="field_deficit_neurosensoriel"
+            data-cy="deficit_neurosensoriel"
+          >
+            <option [ngValue]="null"></option>
+            <option *ngFor="let edeficitneuro of edeficitneuroValues" [value]="edeficitneuro">edeficitneuro</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_deficit_neurosensoriel_val">Deficit Neurosensoriel Val</label>
+          <select
+            class="form-control"
+            name="deficit_neurosensoriel_val"
+            formControlName="deficit_neurosensoriel_val"
+            id="field_deficit_neurosensoriel_val"
+            data-cy="deficit_neurosensoriel_val"
+          >
+            <option [ngValue]="null"></option>
+            <option *ngFor="let edeficitneurosensorielval of edeficitneurosensorielvalValues" [value]="edeficitneurosensorielval">
+              edeficitneurosensorielval
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_deficience_psychique">Deficience Psychique</label>
+          <select
+            class="form-control"
+            name="deficience_psychique"
+            formControlName="deficience_psychique"
+            id="field_deficience_psychique"
+            data-cy="deficience_psychique"
+          >
+            <option [ngValue]="null"></option>
+            <option *ngFor="let edeficiencepsychique of edeficiencepsychiqueValues" [value]="edeficiencepsychique">
+              edeficiencepsychique
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_deficience_psychique_val">Deficience Psychique Val</label>
+          <select
+            class="form-control"
+            name="deficience_psychique_val"
+            formControlName="deficience_psychique_val"
+            id="field_deficience_psychique_val"
+            data-cy="deficience_psychique_val"
+          >
+            <option [ngValue]="null"></option>
+            <option *ngFor="let edeficiencepsychiqueval of edeficiencepsychiquevalValues" [value]="edeficiencepsychiqueval">
+              edeficiencepsychiqueval
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_autre_deficience_psychique">Autre Deficience Psychique</label>
+          <input
+            type="text"
+            class="form-control"
+            name="autre_deficience_psychique"
+            id="field_autre_deficience_psychique"
+            data-cy="autre_deficience_psychique"
+            formControlName="autre_deficience_psychique"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_regime">Regime</label>
+          <select class="form-control" name="regime" formControlName="regime" id="field_regime" data-cy="regime">
+            <option [ngValue]="null"></option>
+            <option *ngFor="let eregime of eregimeValues" [value]="eregime">eregime</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_regime_val">Regime Val</label>
+          <select class="form-control" name="regime_val" formControlName="regime_val" id="field_regime_val" data-cy="regime_val">
+            <option [ngValue]="null"></option>
+            <option *ngFor="let eregimeval of eregimevalValues" [value]="eregimeval">eregimeval</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_medicament_specifique">Medicament Specifique</label>
+          <select
+            class="form-control"
+            name="medicament_specifique"
+            formControlName="medicament_specifique"
+            id="field_medicament_specifique"
+            data-cy="medicament_specifique"
+          >
+            <option [ngValue]="null"></option>
+            <option *ngFor="let emedicamentspecifique of emedicamentspecifiqueValues" [value]="emedicamentspecifique">
+              emedicamentspecifique
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_medicament_specifique_val">Medicament Specifique Val</label>
+          <select
+            class="form-control"
+            name="medicament_specifique_val"
+            formControlName="medicament_specifique_val"
+            id="field_medicament_specifique_val"
+            data-cy="medicament_specifique_val"
+          >
+            <option [ngValue]="null"></option>
+            <option *ngFor="let emedicamentspecifiqueval of emedicamentspecifiquevalValues" [value]="emedicamentspecifiqueval">
+              emedicamentspecifiqueval
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_autre_medicament_specifique">Autre Medicament Specifique</label>
+          <input
+            type="text"
+            class="form-control"
+            name="autre_medicament_specifique"
+            id="field_autre_medicament_specifique"
+            data-cy="autre_medicament_specifique"
+            formControlName="autre_medicament_specifique"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_vitamines">Vitamines</label>
+          <select class="form-control" name="vitamines" formControlName="vitamines" id="field_vitamines" data-cy="vitamines">
+            <option [ngValue]="null"></option>
+            <option *ngFor="let evitamines of evitaminesValues" [value]="evitamines">evitamines</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_vitamines_val">Vitamines Val</label>
+          <select
+            class="form-control"
+            name="vitamines_val"
+            formControlName="vitamines_val"
+            id="field_vitamines_val"
+            data-cy="vitamines_val"
+          >
+            <option [ngValue]="null"></option>
+            <option *ngFor="let evitamineval of evitaminevalValues" [value]="evitamineval">evitamineval</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_greffehepatique">Greffehepatique</label>
+          <select
+            class="form-control"
+            name="greffehepatique"
+            formControlName="greffehepatique"
+            id="field_greffehepatique"
+            data-cy="greffehepatique"
+          >
+            <option [ngValue]="null"></option>
+            <option *ngFor="let egreffehepatique of egreffehepatiqueValues" [value]="egreffehepatique">egreffehepatique</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_reeducation_fonctionnelle">Reeducation Fonctionnelle</label>
+          <select
+            class="form-control"
+            name="reeducation_fonctionnelle"
+            formControlName="reeducation_fonctionnelle"
+            id="field_reeducation_fonctionnelle"
+            data-cy="reeducation_fonctionnelle"
+          >
+            <option [ngValue]="null"></option>
+            <option *ngFor="let erededucationfonctionnelle of erededucationfonctionnelleValues" [value]="erededucationfonctionnelle">
+              erededucationfonctionnelle
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_appareillage">Appareillage</label>
+          <select class="form-control" name="appareillage" formControlName="appareillage" id="field_appareillage" data-cy="appareillage">
+            <option [ngValue]="null"></option>
+            <option *ngFor="let eappareillage of eappareillageValues" [value]="eappareillage">eappareillage</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_psuchologie">Psuchologie</label>
+          <select class="form-control" name="psuchologie" formControlName="psuchologie" id="field_psuchologie" data-cy="psuchologie">
+            <option [ngValue]="null"></option>
+            <option *ngFor="let epsychologie of epsychologieValues" [value]="epsychologie">epsychologie</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_ergotherapie">Ergotherapie</label>
+          <select class="form-control" name="ergotherapie" formControlName="ergotherapie" id="field_ergotherapie" data-cy="ergotherapie">
+            <option [ngValue]="null"></option>
+            <option *ngFor="let eergotherapie of eergotherapieValues" [value]="eergotherapie">eergotherapie</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_depistage_post_natal_oriente">Depistage Post Natal Oriente</label>
+          <select
+            class="form-control"
+            name="depistage_post_natal_oriente"
+            formControlName="depistage_post_natal_oriente"
+            id="field_depistage_post_natal_oriente"
+            data-cy="depistage_post_natal_oriente"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              *ngFor="let edepistage_post_natal_oriente of edepistage_post_natal_orienteValues"
+              [value]="edepistage_post_natal_oriente"
+            >
+              edepistage_post_natal_oriente
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_echelle_depistage">Echelle Depistage</label>
+          <select
+            class="form-control"
+            name="echelle_depistage"
+            formControlName="echelle_depistage"
+            id="field_echelle_depistage"
+            data-cy="echelle_depistage"
+          >
+            <option [ngValue]="null"></option>
+            <option *ngFor="let eechelledepistage of eechelledepistageValues" [value]="eechelledepistage">eechelledepistage</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_nombre_individus_depistes">Nombre Individus Depistes</label>
+          <input
+            type="number"
+            class="form-control"
+            name="nombre_individus_depistes"
+            id="field_nombre_individus_depistes"
+            data-cy="nombre_individus_depistes"
+            formControlName="nombre_individus_depistes"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_nouveaux_cas_depistes">Nouveaux Cas Depistes</label>
+          <select
+            class="form-control"
+            name="nouveaux_cas_depistes"
+            formControlName="nouveaux_cas_depistes"
+            id="field_nouveaux_cas_depistes"
+            data-cy="nouveaux_cas_depistes"
+          >
+            <option [ngValue]="null"></option>
+            <option *ngFor="let enouveaux_cas_depistes of enouveaux_cas_depistesValues" [value]="enouveaux_cas_depistes">
+              enouveaux_cas_depistes
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_nombre_nouveaux_cas_depistes">Nombre Nouveaux Cas Depistes</label>
+          <input
+            type="number"
+            class="form-control"
+            name="nombre_nouveaux_cas_depistes"
+            id="field_nombre_nouveaux_cas_depistes"
+            data-cy="nombre_nouveaux_cas_depistes"
+            formControlName="nombre_nouveaux_cas_depistes"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_code_registre1_cas_depistes">Code Registre 1 Cas Depistes</label>
+          <input
+            type="text"
+            class="form-control"
+            name="code_registre1_cas_depistes"
+            id="field_code_registre1_cas_depistes"
+            data-cy="code_registre1_cas_depistes"
+            formControlName="code_registre1_cas_depistes"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_lien_parente1_cas_depistes">Lien Parente 1 Cas Depistes</label>
+          <select
+            class="form-control"
+            name="lien_parente1_cas_depistes"
+            formControlName="lien_parente1_cas_depistes"
+            id="field_lien_parente1_cas_depistes"
+            data-cy="lien_parente1_cas_depistes"
+          >
+            <option [ngValue]="null"></option>
+            <option *ngFor="let elienparente1 of elienparente1Values" [value]="elienparente1">elienparente1</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_autre_lien_parente1">Autre Lien Parente 1</label>
+          <input
+            type="text"
+            class="form-control"
+            name="autre_lien_parente1"
+            id="field_autre_lien_parente1"
+            data-cy="autre_lien_parente1"
+            formControlName="autre_lien_parente1"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_code_registre2_cas_depistes">Code Registre 2 Cas Depistes</label>
+          <input
+            type="text"
+            class="form-control"
+            name="code_registre2_cas_depistes"
+            id="field_code_registre2_cas_depistes"
+            data-cy="code_registre2_cas_depistes"
+            formControlName="code_registre2_cas_depistes"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_lien_parente2_cas_depistes">Lien Parente 2 Cas Depistes</label>
+          <select
+            class="form-control"
+            name="lien_parente2_cas_depistes"
+            formControlName="lien_parente2_cas_depistes"
+            id="field_lien_parente2_cas_depistes"
+            data-cy="lien_parente2_cas_depistes"
+          >
+            <option [ngValue]="null"></option>
+            <option *ngFor="let elienparente2 of elienparente2Values" [value]="elienparente2">elienparente2</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_autre_lien_parente2">Autre Lien Parente 2</label>
+          <input
+            type="text"
+            class="form-control"
+            name="autre_lien_parente2"
+            id="field_autre_lien_parente2"
+            data-cy="autre_lien_parente2"
+            formControlName="autre_lien_parente2"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_nombre_de_grossesse_ulterieures">Nombre De Grossesse Ulterieures</label>
+          <input
+            type="number"
+            class="form-control"
+            name="nombre_de_grossesse_ulterieures"
+            id="field_nombre_de_grossesse_ulterieures"
+            data-cy="nombre_de_grossesse_ulterieures"
+            formControlName="nombre_de_grossesse_ulterieures"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_nomre_DPN">Nomre DPN</label>
+          <input type="number" class="form-control" name="nomre_DPN" id="field_nomre_DPN" data-cy="nomre_DPN" formControlName="nomre_DPN" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_nombre_nouveaux_cas_diagnostiques">Nombre Nouveaux Cas Diagnostiques</label>
+          <input
+            type="number"
+            class="form-control"
+            name="nombre_nouveaux_cas_diagnostiques"
+            id="field_nombre_nouveaux_cas_diagnostiques"
+            data-cy="nombre_nouveaux_cas_diagnostiques"
+            formControlName="nombre_nouveaux_cas_diagnostiques"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_nombre_ITG">Nombre ITG</label>
+          <input
+            type="number"
+            class="form-control"
+            name="nombre_ITG"
+            id="field_nombre_ITG"
+            data-cy="nombre_ITG"
+            formControlName="nombre_ITG"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_nomre_de_grossesses_poursuivies">Nomre De Grossesses Poursuivies</label>
+          <input
+            type="number"
+            class="form-control"
+            name="nomre_de_grossesses_poursuivies"
+            id="field_nomre_de_grossesses_poursuivies"
+            data-cy="nomre_de_grossesses_poursuivies"
+            formControlName="nomre_de_grossesses_poursuivies"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_nombre_de_foetus_sains">Nombre De Foetus Sains</label>
+          <input
+            type="number"
+            class="form-control"
+            name="nombre_de_foetus_sains"
+            id="field_nombre_de_foetus_sains"
+            data-cy="nombre_de_foetus_sains"
+            formControlName="nombre_de_foetus_sains"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_pathologie">Pathologie</label>
+          <select
+            class="form-control"
+            id="field_pathologie"
+            data-cy="pathologie"
+            name="pathologie"
+            formControlName="pathologie"
+            [compareWith]="comparePathologie"
+          >
+            <option *ngIf="!editForm.get('pathologie')!.value" [ngValue]="null" selected></option>
+            <option [ngValue]="pathologieOption" *ngFor="let pathologieOption of pathologiesSharedCollection">
+              {{ pathologieOption.id }}
+            </option>
+          </select>
+        </div>
+        <div
+          *ngIf="editForm.get(['pathologie'])!.invalid && (editForm.get(['pathologie'])!.dirty || editForm.get(['pathologie'])!.touched)"
+        >
+          <small class="form-text text-danger" *ngIf="editForm.get(['pathologie'])?.errors?.required"> This field is required. </small>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

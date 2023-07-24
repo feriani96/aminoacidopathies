@@ -1,0 +1,88 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="casdecesbasage">
+      <h2 data-cy="casdecesbasageDetailsHeading"><span>Casdecesbasage</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ casdecesbasage.id }}</span>
+        </dd>
+        <dt><span>Confirme</span></dt>
+        <dd>
+          <span>{{ casdecesbasage.confirme }}</span>
+        </dd>
+        <dt><span>Code Registre</span></dt>
+        <dd>
+          <span>{{ casdecesbasage.code_registre }}</span>
+        </dd>
+        <dt><span>Suspecte</span></dt>
+        <dd>
+          <span>{{ casdecesbasage.suspecte }}</span>
+        </dd>
+        <dt><span>Lien De Parente</span></dt>
+        <dd>
+          <span>{{ casdecesbasage.lien_de_parente }}</span>
+        </dd>
+        <dt><span>Autre Lien Parente</span></dt>
+        <dd>
+          <span>{{ casdecesbasage.autre_lien_parente }}</span>
+        </dd>
+        <dt><span>An Age De Deces</span></dt>
+        <dd>
+          <span>{{ casdecesbasage.an_age_de_deces }}</span>
+        </dd>
+        <dt><span>Mois Age De Deces</span></dt>
+        <dd>
+          <span>{{ casdecesbasage.mois_age_de_deces }}</span>
+        </dd>
+        <dt><span>Jours Age De Deces</span></dt>
+        <dd>
+          <span>{{ casdecesbasage.jours_age_de_deces }}</span>
+        </dd>
+        <dt><span>Tbl Neuro</span></dt>
+        <dd>
+          <span>{{ casdecesbasage.tbl_neuro }}</span>
+        </dd>
+        <dt><span>Tbl Hemorragique</span></dt>
+        <dd>
+          <span>{{ casdecesbasage.tbl_hemorragique }}</span>
+        </dd>
+        <dt><span>Tbl Infx</span></dt>
+        <dd>
+          <span>{{ casdecesbasage.tbl_infx }}</span>
+        </dd>
+        <dt><span>Autre Circonstances Deces</span></dt>
+        <dd>
+          <span>{{ casdecesbasage.autre_circonstances_deces }}</span>
+        </dd>
+        <dt><span>Bautre Circonstance Deces</span></dt>
+        <dd>
+          <span>{{ casdecesbasage.bautre_circonstance_deces }}</span>
+        </dd>
+        <dt><span>Np Circonstances Deces</span></dt>
+        <dd>
+          <span>{{ casdecesbasage.np_circonstances_deces }}</span>
+        </dd>
+        <dt><span>Lieu Deces</span></dt>
+        <dd>
+          <span>{{ casdecesbasage.lieu_deces }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/casdecesbasage', casdecesbasage.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

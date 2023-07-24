@@ -1,0 +1,30 @@
+{
+  "changelogDate": "20230717212959",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "code_registre",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "lien_parente",
+      "fieldType": "elien_parente",
+      "fieldValues": "FRERE_SOEUR,PERE_MERE,ONCLE_TANTE,NEVEU_NIECE,COUSIN_COUSINE,AUTRE,NP"
+    }
+  ],
+  "jpaMetamodelFiltering": false,
+  "name": "Casconfirme",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "id",
+      "otherEntityName": "fiche",
+      "relationshipName": "fiche",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": ["required"]
+    }
+  ],
+  "service": "serviceClass"
+}

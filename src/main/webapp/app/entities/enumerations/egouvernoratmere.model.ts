@@ -1,0 +1,51 @@
+export enum egouvernoratmere {
+  ARIANA = 'ARIANA',
+
+  BEJA = 'BEJA',
+
+  BENAROUS = 'BENAROUS',
+
+  BIZERTE = 'BIZERTE',
+
+  GABES = 'GABES',
+
+  GAFSA = 'GAFSA',
+
+  JENDOUBA = 'JENDOUBA',
+
+  KAIROUAN = 'KAIROUAN',
+
+  KASSERINE = 'KASSERINE',
+
+  KEBIL = 'KEBIL',
+
+  KEF = 'KEF',
+
+  MAHDIA = 'MAHDIA',
+
+  MANOUBA = 'MANOUBA',
+
+  MEDENINE = 'MEDENINE',
+
+  MONASTIR = 'MONASTIR',
+
+  NABEUL = 'NABEUL',
+
+  SFAX = 'SFAX',
+
+  SIDIBOUZID = 'SIDIBOUZID',
+
+  SILIANA = 'SILIANA',
+
+  SOUSSE = 'SOUSSE',
+
+  TATAOUINE = 'TATAOUINE',
+
+  TOZEUR = 'TOZEUR',
+
+  TUNIS = 'TUNIS',
+
+  ZAGHOUAN = 'ZAGHOUAN',
+
+  NP = 'NP',
+}

@@ -1,0 +1,182 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-casdecesbasage-heading" data-cy="CasdecesbasageCreateUpdateHeading">Create or edit a Casdecesbasage</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_confirme">Confirme</label>
+          <input type="checkbox" class="form-check" name="confirme" id="field_confirme" data-cy="confirme" formControlName="confirme" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_code_registre">Code Registre</label>
+          <input
+            type="text"
+            class="form-control"
+            name="code_registre"
+            id="field_code_registre"
+            data-cy="code_registre"
+            formControlName="code_registre"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_suspecte">Suspecte</label>
+          <input type="checkbox" class="form-check" name="suspecte" id="field_suspecte" data-cy="suspecte" formControlName="suspecte" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_lien_de_parente">Lien De Parente</label>
+          <select
+            class="form-control"
+            name="lien_de_parente"
+            formControlName="lien_de_parente"
+            id="field_lien_de_parente"
+            data-cy="lien_de_parente"
+          >
+            <option [ngValue]="null"></option>
+            <option *ngFor="let elienparente of elienparenteValues" [value]="elienparente">elienparente</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_autre_lien_parente">Autre Lien Parente</label>
+          <input
+            type="text"
+            class="form-control"
+            name="autre_lien_parente"
+            id="field_autre_lien_parente"
+            data-cy="autre_lien_parente"
+            formControlName="autre_lien_parente"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_an_age_de_deces">An Age De Deces</label>
+          <input
+            type="number"
+            class="form-control"
+            name="an_age_de_deces"
+            id="field_an_age_de_deces"
+            data-cy="an_age_de_deces"
+            formControlName="an_age_de_deces"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_mois_age_de_deces">Mois Age De Deces</label>
+          <input
+            type="number"
+            class="form-control"
+            name="mois_age_de_deces"
+            id="field_mois_age_de_deces"
+            data-cy="mois_age_de_deces"
+            formControlName="mois_age_de_deces"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_jours_age_de_deces">Jours Age De Deces</label>
+          <input
+            type="number"
+            class="form-control"
+            name="jours_age_de_deces"
+            id="field_jours_age_de_deces"
+            data-cy="jours_age_de_deces"
+            formControlName="jours_age_de_deces"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_tbl_neuro">Tbl Neuro</label>
+          <input type="checkbox" class="form-check" name="tbl_neuro" id="field_tbl_neuro" data-cy="tbl_neuro" formControlName="tbl_neuro" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_tbl_hemorragique">Tbl Hemorragique</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="tbl_hemorragique"
+            id="field_tbl_hemorragique"
+            data-cy="tbl_hemorragique"
+            formControlName="tbl_hemorragique"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_tbl_infx">Tbl Infx</label>
+          <input type="checkbox" class="form-check" name="tbl_infx" id="field_tbl_infx" data-cy="tbl_infx" formControlName="tbl_infx" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_autre_circonstances_deces">Autre Circonstances Deces</label>
+          <input
+            type="text"
+            class="form-control"
+            name="autre_circonstances_deces"
+            id="field_autre_circonstances_deces"
+            data-cy="autre_circonstances_deces"
+            formControlName="autre_circonstances_deces"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_bautre_circonstance_deces">Bautre Circonstance Deces</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="bautre_circonstance_deces"
+            id="field_bautre_circonstance_deces"
+            data-cy="bautre_circonstance_deces"
+            formControlName="bautre_circonstance_deces"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_np_circonstances_deces">Np Circonstances Deces</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="np_circonstances_deces"
+            id="field_np_circonstances_deces"
+            data-cy="np_circonstances_deces"
+            formControlName="np_circonstances_deces"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_lieu_deces">Lieu Deces</label>
+          <select class="form-control" name="lieu_deces" formControlName="lieu_deces" id="field_lieu_deces" data-cy="lieu_deces">
+            <option [ngValue]="null"></option>
+            <option *ngFor="let elieudeces of elieudecesValues" [value]="elieudeces">elieudeces</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

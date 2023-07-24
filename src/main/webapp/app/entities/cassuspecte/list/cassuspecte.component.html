@@ -1,0 +1,316 @@
+<div>
+  <h2 id="page-heading" data-cy="CassuspecteHeading">
+    <span>Cassuspectes</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-cassuspecte"
+        [routerLink]="['/cassuspecte/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span> Create a new Cassuspecte </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="cassuspectes?.length === 0">
+    <span>No Cassuspectes found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="cassuspectes && cassuspectes.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span>ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="lienparente">
+            <div class="d-flex">
+              <span>Lienparente</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="lienparenteautre">
+            <div class="d-flex">
+              <span>Lienparenteautre</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="signes_neurologiques">
+            <div class="d-flex">
+              <span>Signes Neurologiques</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="troubles_de_la_conscience">
+            <div class="d-flex">
+              <span>Troubles De La Conscience</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="retard_psychomoteur">
+            <div class="d-flex">
+              <span>Retard Psychomoteur</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="retard_mental">
+            <div class="d-flex">
+              <span>Retard Mental</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="signes_du_spectre_autistique">
+            <div class="d-flex">
+              <span>Signes Du Spectre Autistique</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="epilepsie">
+            <div class="d-flex">
+              <span>Epilepsie</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="crise_pseudoporphyrique">
+            <div class="d-flex">
+              <span>Crise Pseudoporphyrique</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="autres_signes_neurologiques">
+            <div class="d-flex">
+              <span>Autres Signes Neurologiques</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="signes_hepatiques">
+            <div class="d-flex">
+              <span>Signes Hepatiques</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="ictere">
+            <div class="d-flex">
+              <span>Ictere</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="ballonnement">
+            <div class="d-flex">
+              <span>Ballonnement</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="syndrome_hemorragique">
+            <div class="d-flex">
+              <span>Syndrome Hemorragique</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="autres_signes_hepatiques">
+            <div class="d-flex">
+              <span>Autres Signes Hepatiques</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="signes_osseux">
+            <div class="d-flex">
+              <span>Signes Osseux</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="signes_de_rachitisme">
+            <div class="d-flex">
+              <span>Signes De Rachitisme</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="autre_signes_osseux">
+            <div class="d-flex">
+              <span>Autre Signes Osseux</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="manifestations_thrombotiques">
+            <div class="d-flex">
+              <span>Manifestations Thrombotiques</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="cerebrale">
+            <div class="d-flex">
+              <span>Cerebrale</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="autre_manifestations_thrombotiques">
+            <div class="d-flex">
+              <span>Autre Manifestations Thrombotiques</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="manifestations_ophtalmologiques">
+            <div class="d-flex">
+              <span>Manifestations Ophtalmologiques</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="luxation">
+            <div class="d-flex">
+              <span>Luxation</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="ectopie_cristalinienne">
+            <div class="d-flex">
+              <span>Ectopie Cristalinienne</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="cataracte">
+            <div class="d-flex">
+              <span>Cataracte</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="glaucome">
+            <div class="d-flex">
+              <span>Glaucome</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="myopie">
+            <div class="d-flex">
+              <span>Myopie</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="manifestations_ophtalmologiques_autre">
+            <div class="d-flex">
+              <span>Manifestations Ophtalmologiques Autre</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="autre_criteres">
+            <div class="d-flex">
+              <span>Autre Criteres</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="str_autres_criteres">
+            <div class="d-flex">
+              <span>Str Autres Criteres</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="critere_non_precise">
+            <div class="d-flex">
+              <span>Critere Non Precise</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cassuspecte of cassuspectes; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/cassuspecte', cassuspecte.id, 'view']">{{ cassuspecte.id }}</a>
+          </td>
+          <td>{{ cassuspecte.lienparente }}</td>
+          <td>{{ cassuspecte.lienparenteautre }}</td>
+          <td>{{ cassuspecte.signes_neurologiques }}</td>
+          <td>{{ cassuspecte.troubles_de_la_conscience }}</td>
+          <td>{{ cassuspecte.retard_psychomoteur }}</td>
+          <td>{{ cassuspecte.retard_mental }}</td>
+          <td>{{ cassuspecte.signes_du_spectre_autistique }}</td>
+          <td>{{ cassuspecte.epilepsie }}</td>
+          <td>{{ cassuspecte.crise_pseudoporphyrique }}</td>
+          <td>{{ cassuspecte.autres_signes_neurologiques }}</td>
+          <td>{{ cassuspecte.signes_hepatiques }}</td>
+          <td>{{ cassuspecte.ictere }}</td>
+          <td>{{ cassuspecte.ballonnement }}</td>
+          <td>{{ cassuspecte.syndrome_hemorragique }}</td>
+          <td>{{ cassuspecte.autres_signes_hepatiques }}</td>
+          <td>{{ cassuspecte.signes_osseux }}</td>
+          <td>{{ cassuspecte.signes_de_rachitisme }}</td>
+          <td>{{ cassuspecte.autre_signes_osseux }}</td>
+          <td>{{ cassuspecte.manifestations_thrombotiques }}</td>
+          <td>{{ cassuspecte.cerebrale }}</td>
+          <td>{{ cassuspecte.autre_manifestations_thrombotiques }}</td>
+          <td>{{ cassuspecte.manifestations_ophtalmologiques }}</td>
+          <td>{{ cassuspecte.luxation }}</td>
+          <td>{{ cassuspecte.ectopie_cristalinienne }}</td>
+          <td>{{ cassuspecte.cataracte }}</td>
+          <td>{{ cassuspecte.glaucome }}</td>
+          <td>{{ cassuspecte.myopie }}</td>
+          <td>{{ cassuspecte.manifestations_ophtalmologiques_autre }}</td>
+          <td>{{ cassuspecte.autre_criteres }}</td>
+          <td>{{ cassuspecte.str_autres_criteres }}</td>
+          <td>{{ cassuspecte.critere_non_precise }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/cassuspecte', cassuspecte.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/cassuspecte', cassuspecte.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(cassuspecte)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="cassuspectes && cassuspectes.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [page]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,64 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-metabolique-heading" data-cy="MetaboliqueCreateUpdateHeading">Create or edit a Metabolique</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_name">Name</label>
+          <select class="form-control" name="name" formControlName="name" id="field_name" data-cy="name">
+            <option [ngValue]="null"></option>
+            <option *ngFor="let ename of enameValues" [value]="ename">ename</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_fait">Fait</label>
+          <select class="form-control" name="fait" formControlName="fait" id="field_fait" data-cy="fait">
+            <option [ngValue]="null"></option>
+            <option *ngFor="let efait of efaitValues" [value]="efait">efait</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_laboratoire">Laboratoire</label>
+          <select class="form-control" name="laboratoire" formControlName="laboratoire" id="field_laboratoire" data-cy="laboratoire">
+            <option [ngValue]="null"></option>
+            <option *ngFor="let elaboratoire of elaboratoireValues" [value]="elaboratoire">elaboratoire</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_resultat">Resultat</label>
+          <select class="form-control" name="resultat" formControlName="resultat" id="field_resultat" data-cy="resultat">
+            <option [ngValue]="null"></option>
+            <option *ngFor="let eResultat of eResultatValues" [value]="eResultat">eResultat</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

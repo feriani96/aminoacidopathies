@@ -1,0 +1,9 @@
+export enum eResultat {
+  PATHOLOGIQUE = 'PATHOLOGIQUE',
+
+  NORMAL = 'NORMAL',
+
+  NON_CONCLUANT = 'NON_CONCLUANT',
+
+  EN_COURS = 'EN_COURS',
+}

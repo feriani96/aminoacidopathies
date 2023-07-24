@@ -1,0 +1,11 @@
+export enum escolarisetype {
+  ECOLE_NORMALE = 'ECOLE_NORMALE',
+
+  ECOLE_INTEGRATION = 'ECOLE_INTEGRATION',
+
+  CENTRE_SPECIALISE = 'CENTRE_SPECIALISE',
+
+  AUTRE = 'AUTRE',
+
+  NP = 'NP',
+}

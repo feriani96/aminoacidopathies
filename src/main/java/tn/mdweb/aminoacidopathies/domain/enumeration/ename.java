@@ -1,0 +1,21 @@
+package tn.mdweb.aminoacidopathies.domain.enumeration;
+
+/**
+ * The ename enumeration.
+ */
+public enum ename {
+    BRANDT,
+    BARBER,
+    DNPH,
+    PHENISTIX,
+    ALPHAFOETOPROTEINE,
+    DOSAGEPHESURPAPIER,
+    CAAPLASMATIQUE,
+    CAAURINAIRE,
+    CAOURINAIRE,
+    SUCCINYLACETONEURINAIRE,
+    SUCCINYLACETONESURPAPIERGUTHRIE,
+    DOSAGEHOMOCYSTEINEPLASMATIQUE,
+    DOSAGEENZYMATIQUE,
+    BIOLOGIEMOLECULAIRE,
+}

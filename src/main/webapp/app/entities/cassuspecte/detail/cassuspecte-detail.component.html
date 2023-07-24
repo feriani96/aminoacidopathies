@@ -1,0 +1,152 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="cassuspecte">
+      <h2 data-cy="cassuspecteDetailsHeading"><span>Cassuspecte</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ cassuspecte.id }}</span>
+        </dd>
+        <dt><span>Lienparente</span></dt>
+        <dd>
+          <span>{{ cassuspecte.lienparente }}</span>
+        </dd>
+        <dt><span>Lienparenteautre</span></dt>
+        <dd>
+          <span>{{ cassuspecte.lienparenteautre }}</span>
+        </dd>
+        <dt><span>Signes Neurologiques</span></dt>
+        <dd>
+          <span>{{ cassuspecte.signes_neurologiques }}</span>
+        </dd>
+        <dt><span>Troubles De La Conscience</span></dt>
+        <dd>
+          <span>{{ cassuspecte.troubles_de_la_conscience }}</span>
+        </dd>
+        <dt><span>Retard Psychomoteur</span></dt>
+        <dd>
+          <span>{{ cassuspecte.retard_psychomoteur }}</span>
+        </dd>
+        <dt><span>Retard Mental</span></dt>
+        <dd>
+          <span>{{ cassuspecte.retard_mental }}</span>
+        </dd>
+        <dt><span>Signes Du Spectre Autistique</span></dt>
+        <dd>
+          <span>{{ cassuspecte.signes_du_spectre_autistique }}</span>
+        </dd>
+        <dt><span>Epilepsie</span></dt>
+        <dd>
+          <span>{{ cassuspecte.epilepsie }}</span>
+        </dd>
+        <dt><span>Crise Pseudoporphyrique</span></dt>
+        <dd>
+          <span>{{ cassuspecte.crise_pseudoporphyrique }}</span>
+        </dd>
+        <dt><span>Autres Signes Neurologiques</span></dt>
+        <dd>
+          <span>{{ cassuspecte.autres_signes_neurologiques }}</span>
+        </dd>
+        <dt><span>Signes Hepatiques</span></dt>
+        <dd>
+          <span>{{ cassuspecte.signes_hepatiques }}</span>
+        </dd>
+        <dt><span>Ictere</span></dt>
+        <dd>
+          <span>{{ cassuspecte.ictere }}</span>
+        </dd>
+        <dt><span>Ballonnement</span></dt>
+        <dd>
+          <span>{{ cassuspecte.ballonnement }}</span>
+        </dd>
+        <dt><span>Syndrome Hemorragique</span></dt>
+        <dd>
+          <span>{{ cassuspecte.syndrome_hemorragique }}</span>
+        </dd>
+        <dt><span>Autres Signes Hepatiques</span></dt>
+        <dd>
+          <span>{{ cassuspecte.autres_signes_hepatiques }}</span>
+        </dd>
+        <dt><span>Signes Osseux</span></dt>
+        <dd>
+          <span>{{ cassuspecte.signes_osseux }}</span>
+        </dd>
+        <dt><span>Signes De Rachitisme</span></dt>
+        <dd>
+          <span>{{ cassuspecte.signes_de_rachitisme }}</span>
+        </dd>
+        <dt><span>Autre Signes Osseux</span></dt>
+        <dd>
+          <span>{{ cassuspecte.autre_signes_osseux }}</span>
+        </dd>
+        <dt><span>Manifestations Thrombotiques</span></dt>
+        <dd>
+          <span>{{ cassuspecte.manifestations_thrombotiques }}</span>
+        </dd>
+        <dt><span>Cerebrale</span></dt>
+        <dd>
+          <span>{{ cassuspecte.cerebrale }}</span>
+        </dd>
+        <dt><span>Autre Manifestations Thrombotiques</span></dt>
+        <dd>
+          <span>{{ cassuspecte.autre_manifestations_thrombotiques }}</span>
+        </dd>
+        <dt><span>Manifestations Ophtalmologiques</span></dt>
+        <dd>
+          <span>{{ cassuspecte.manifestations_ophtalmologiques }}</span>
+        </dd>
+        <dt><span>Luxation</span></dt>
+        <dd>
+          <span>{{ cassuspecte.luxation }}</span>
+        </dd>
+        <dt><span>Ectopie Cristalinienne</span></dt>
+        <dd>
+          <span>{{ cassuspecte.ectopie_cristalinienne }}</span>
+        </dd>
+        <dt><span>Cataracte</span></dt>
+        <dd>
+          <span>{{ cassuspecte.cataracte }}</span>
+        </dd>
+        <dt><span>Glaucome</span></dt>
+        <dd>
+          <span>{{ cassuspecte.glaucome }}</span>
+        </dd>
+        <dt><span>Myopie</span></dt>
+        <dd>
+          <span>{{ cassuspecte.myopie }}</span>
+        </dd>
+        <dt><span>Manifestations Ophtalmologiques Autre</span></dt>
+        <dd>
+          <span>{{ cassuspecte.manifestations_ophtalmologiques_autre }}</span>
+        </dd>
+        <dt><span>Autre Criteres</span></dt>
+        <dd>
+          <span>{{ cassuspecte.autre_criteres }}</span>
+        </dd>
+        <dt><span>Str Autres Criteres</span></dt>
+        <dd>
+          <span>{{ cassuspecte.str_autres_criteres }}</span>
+        </dd>
+        <dt><span>Critere Non Precise</span></dt>
+        <dd>
+          <span>{{ cassuspecte.critere_non_precise }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/cassuspecte', cassuspecte.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

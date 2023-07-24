@@ -1,0 +1,204 @@
+<div>
+  <h2 id="page-heading" data-cy="CasdecesbasageHeading">
+    <span>Casdecesbasages</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-casdecesbasage"
+        [routerLink]="['/casdecesbasage/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span> Create a new Casdecesbasage </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="casdecesbasages?.length === 0">
+    <span>No Casdecesbasages found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="casdecesbasages && casdecesbasages.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span>ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="confirme">
+            <div class="d-flex">
+              <span>Confirme</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="code_registre">
+            <div class="d-flex">
+              <span>Code Registre</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="suspecte">
+            <div class="d-flex">
+              <span>Suspecte</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="lien_de_parente">
+            <div class="d-flex">
+              <span>Lien De Parente</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="autre_lien_parente">
+            <div class="d-flex">
+              <span>Autre Lien Parente</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="an_age_de_deces">
+            <div class="d-flex">
+              <span>An Age De Deces</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="mois_age_de_deces">
+            <div class="d-flex">
+              <span>Mois Age De Deces</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="jours_age_de_deces">
+            <div class="d-flex">
+              <span>Jours Age De Deces</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="tbl_neuro">
+            <div class="d-flex">
+              <span>Tbl Neuro</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="tbl_hemorragique">
+            <div class="d-flex">
+              <span>Tbl Hemorragique</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="tbl_infx">
+            <div class="d-flex">
+              <span>Tbl Infx</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="autre_circonstances_deces">
+            <div class="d-flex">
+              <span>Autre Circonstances Deces</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="bautre_circonstance_deces">
+            <div class="d-flex">
+              <span>Bautre Circonstance Deces</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="np_circonstances_deces">
+            <div class="d-flex">
+              <span>Np Circonstances Deces</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="lieu_deces">
+            <div class="d-flex">
+              <span>Lieu Deces</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let casdecesbasage of casdecesbasages; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/casdecesbasage', casdecesbasage.id, 'view']">{{ casdecesbasage.id }}</a>
+          </td>
+          <td>{{ casdecesbasage.confirme }}</td>
+          <td>{{ casdecesbasage.code_registre }}</td>
+          <td>{{ casdecesbasage.suspecte }}</td>
+          <td>{{ casdecesbasage.lien_de_parente }}</td>
+          <td>{{ casdecesbasage.autre_lien_parente }}</td>
+          <td>{{ casdecesbasage.an_age_de_deces }}</td>
+          <td>{{ casdecesbasage.mois_age_de_deces }}</td>
+          <td>{{ casdecesbasage.jours_age_de_deces }}</td>
+          <td>{{ casdecesbasage.tbl_neuro }}</td>
+          <td>{{ casdecesbasage.tbl_hemorragique }}</td>
+          <td>{{ casdecesbasage.tbl_infx }}</td>
+          <td>{{ casdecesbasage.autre_circonstances_deces }}</td>
+          <td>{{ casdecesbasage.bautre_circonstance_deces }}</td>
+          <td>{{ casdecesbasage.np_circonstances_deces }}</td>
+          <td>{{ casdecesbasage.lieu_deces }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/casdecesbasage', casdecesbasage.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/casdecesbasage', casdecesbasage.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(casdecesbasage)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="casdecesbasages && casdecesbasages.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [page]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+export enum elieudeces {
+  DOMICILE = 'DOMICILE',
+
+  STRUCTURE_SANTE_PUBLIQUE = 'STRUCTURE_SANTE_PUBLIQUE',
+
+  NP = 'NP',
+}

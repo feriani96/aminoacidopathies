@@ -1,0 +1,15 @@
+export enum elienparente {
+  FRERE_SOEUR = 'FRERE_SOEUR',
+
+  PERE_MERE = 'PERE_MERE',
+
+  ONCLE_TANTE = 'ONCLE_TANTE',
+
+  NEVEU_NIECE = 'NEVEU_NIECE',
+
+  COUSIN_COUSINE = 'COUSIN_COUSINE',
+
+  AUTRE = 'AUTRE',
+
+  NP = 'NP',
+}

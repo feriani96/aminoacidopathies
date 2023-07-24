@@ -1,0 +1,653 @@
+<div>
+  <h2 id="page-heading" data-cy="FicheHeading">
+    <span>Fiches</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-fiche"
+        [routerLink]="['/fiche/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span> Create a new Fiche </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="fiches?.length === 0">
+    <span>No Fiches found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="fiches && fiches.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span>ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="datemaj">
+            <div class="d-flex">
+              <span>Datemaj</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="type_observation">
+            <div class="d-flex">
+              <span>Type Observation</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="identifiant_registre">
+            <div class="d-flex">
+              <span>Identifiant Registre</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="date_enregistrement">
+            <div class="d-flex">
+              <span>Date Enregistrement</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="sexe">
+            <div class="d-flex">
+              <span>Sexe</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="date_naissance">
+            <div class="d-flex">
+              <span>Date Naissance</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="statut">
+            <div class="d-flex">
+              <span>Statut</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="date_deces">
+            <div class="d-flex">
+              <span>Date Deces</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="circonstance_deces">
+            <div class="d-flex">
+              <span>Circonstance Deces</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="autre_circonstance_deces">
+            <div class="d-flex">
+              <span>Autre Circonstance Deces</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="lieu_deces">
+            <div class="d-flex">
+              <span>Lieu Deces</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="consanguinite">
+            <div class="d-flex">
+              <span>Consanguinite</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="origine_geo_pere_gouvernorat">
+            <div class="d-flex">
+              <span>Origine Geo Pere Gouvernorat</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="origine_geo_mere_gouvernorat">
+            <div class="d-flex">
+              <span>Origine Geo Mere Gouvernorat</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="origine_geo_pere_deleguation">
+            <div class="d-flex">
+              <span>Origine Geo Pere Deleguation</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="origine_geo_mere_deleguation">
+            <div class="d-flex">
+              <span>Origine Geo Mere Deleguation</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="couverture_sociale">
+            <div class="d-flex">
+              <span>Couverture Sociale</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="autre_couverture_sociale">
+            <div class="d-flex">
+              <span>Autre Couverture Sociale</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="activite">
+            <div class="d-flex">
+              <span>Activite</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="btravail">
+            <div class="d-flex">
+              <span>Btravail</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="travail">
+            <div class="d-flex">
+              <span>Travail</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="scolarise">
+            <div class="d-flex">
+              <span>Scolarise</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="type_scolarise">
+            <div class="d-flex">
+              <span>Type Scolarise</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="niveau_scolarisation">
+            <div class="d-flex">
+              <span>Niveau Scolarisation</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="cas_familiaux">
+            <div class="d-flex">
+              <span>Cas Familiaux</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nbcasconfirme">
+            <div class="d-flex">
+              <span>Nbcasconfirme</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nbcassuspectes">
+            <div class="d-flex">
+              <span>Nbcassuspectes</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nbcasdecedes">
+            <div class="d-flex">
+              <span>Nbcasdecedes</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="deces_en_bas_age">
+            <div class="d-flex">
+              <span>Deces En Bas Age</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nbcas_deces_age_bas">
+            <div class="d-flex">
+              <span>Nbcas Deces Age Bas</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="circonstances_decouverte">
+            <div class="d-flex">
+              <span>Circonstances Decouverte</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="age_aux_premiers_symptomes">
+            <div class="d-flex">
+              <span>Age Aux Premiers Symptomes</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="an_age_premiers_symptomes">
+            <div class="d-flex">
+              <span>An Age Premiers Symptomes</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="mois_age_premiers_symptomes">
+            <div class="d-flex">
+              <span>Mois Age Premiers Symptomes</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="jours_premiers_symptomes">
+            <div class="d-flex">
+              <span>Jours Premiers Symptomes</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="age_premiere_consultation">
+            <div class="d-flex">
+              <span>Age Premiere Consultation</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="an_age_premiere_consultation">
+            <div class="d-flex">
+              <span>An Age Premiere Consultation</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="mois_age_premiere_consultation">
+            <div class="d-flex">
+              <span>Mois Age Premiere Consultation</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="jours_premiere_consultation">
+            <div class="d-flex">
+              <span>Jours Premiere Consultation</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="date_derniere_evaluation">
+            <div class="d-flex">
+              <span>Date Derniere Evaluation</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="date_diagnostic">
+            <div class="d-flex">
+              <span>Date Diagnostic</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="handicap_mental">
+            <div class="d-flex">
+              <span>Handicap Mental</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="qi">
+            <div class="d-flex">
+              <span>Qi</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="handicap_moteur">
+            <div class="d-flex">
+              <span>Handicap Moteur</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="hadicap_moteur_grade">
+            <div class="d-flex">
+              <span>Hadicap Moteur Grade</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="deficit_neurosensoriel">
+            <div class="d-flex">
+              <span>Deficit Neurosensoriel</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="deficit_neurosensoriel_val">
+            <div class="d-flex">
+              <span>Deficit Neurosensoriel Val</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="deficience_psychique">
+            <div class="d-flex">
+              <span>Deficience Psychique</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="deficience_psychique_val">
+            <div class="d-flex">
+              <span>Deficience Psychique Val</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="autre_deficience_psychique">
+            <div class="d-flex">
+              <span>Autre Deficience Psychique</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="regime">
+            <div class="d-flex">
+              <span>Regime</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="regime_val">
+            <div class="d-flex">
+              <span>Regime Val</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="medicament_specifique">
+            <div class="d-flex">
+              <span>Medicament Specifique</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="medicament_specifique_val">
+            <div class="d-flex">
+              <span>Medicament Specifique Val</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="autre_medicament_specifique">
+            <div class="d-flex">
+              <span>Autre Medicament Specifique</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="vitamines">
+            <div class="d-flex">
+              <span>Vitamines</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="vitamines_val">
+            <div class="d-flex">
+              <span>Vitamines Val</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="greffehepatique">
+            <div class="d-flex">
+              <span>Greffehepatique</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="reeducation_fonctionnelle">
+            <div class="d-flex">
+              <span>Reeducation Fonctionnelle</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="appareillage">
+            <div class="d-flex">
+              <span>Appareillage</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="psuchologie">
+            <div class="d-flex">
+              <span>Psuchologie</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="ergotherapie">
+            <div class="d-flex">
+              <span>Ergotherapie</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="depistage_post_natal_oriente">
+            <div class="d-flex">
+              <span>Depistage Post Natal Oriente</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="echelle_depistage">
+            <div class="d-flex">
+              <span>Echelle Depistage</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nombre_individus_depistes">
+            <div class="d-flex">
+              <span>Nombre Individus Depistes</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nouveaux_cas_depistes">
+            <div class="d-flex">
+              <span>Nouveaux Cas Depistes</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nombre_nouveaux_cas_depistes">
+            <div class="d-flex">
+              <span>Nombre Nouveaux Cas Depistes</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="code_registre1_cas_depistes">
+            <div class="d-flex">
+              <span>Code Registre 1 Cas Depistes</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="lien_parente1_cas_depistes">
+            <div class="d-flex">
+              <span>Lien Parente 1 Cas Depistes</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="autre_lien_parente1">
+            <div class="d-flex">
+              <span>Autre Lien Parente 1</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="code_registre2_cas_depistes">
+            <div class="d-flex">
+              <span>Code Registre 2 Cas Depistes</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="lien_parente2_cas_depistes">
+            <div class="d-flex">
+              <span>Lien Parente 2 Cas Depistes</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="autre_lien_parente2">
+            <div class="d-flex">
+              <span>Autre Lien Parente 2</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nombre_de_grossesse_ulterieures">
+            <div class="d-flex">
+              <span>Nombre De Grossesse Ulterieures</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nomre_DPN">
+            <div class="d-flex">
+              <span>Nomre DPN</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nombre_nouveaux_cas_diagnostiques">
+            <div class="d-flex">
+              <span>Nombre Nouveaux Cas Diagnostiques</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nombre_ITG">
+            <div class="d-flex">
+              <span>Nombre ITG</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nomre_de_grossesses_poursuivies">
+            <div class="d-flex">
+              <span>Nomre De Grossesses Poursuivies</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nombre_de_foetus_sains">
+            <div class="d-flex">
+              <span>Nombre De Foetus Sains</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="pathologie.id">
+            <div class="d-flex">
+              <span>Pathologie</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let fiche of fiches; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/fiche', fiche.id, 'view']">{{ fiche.id }}</a>
+          </td>
+          <td>{{ fiche.datemaj | formatMediumDate }}</td>
+          <td>{{ fiche.type_observation }}</td>
+          <td>{{ fiche.identifiant_registre }}</td>
+          <td>{{ fiche.date_enregistrement | formatMediumDate }}</td>
+          <td>{{ fiche.sexe }}</td>
+          <td>{{ fiche.date_naissance | formatMediumDate }}</td>
+          <td>{{ fiche.statut }}</td>
+          <td>{{ fiche.date_deces | formatMediumDate }}</td>
+          <td>{{ fiche.circonstance_deces }}</td>
+          <td>{{ fiche.autre_circonstance_deces }}</td>
+          <td>{{ fiche.lieu_deces }}</td>
+          <td>{{ fiche.consanguinite }}</td>
+          <td>{{ fiche.origine_geo_pere_gouvernorat }}</td>
+          <td>{{ fiche.origine_geo_mere_gouvernorat }}</td>
+          <td>{{ fiche.origine_geo_pere_deleguation }}</td>
+          <td>{{ fiche.origine_geo_mere_deleguation }}</td>
+          <td>{{ fiche.couverture_sociale }}</td>
+          <td>{{ fiche.autre_couverture_sociale }}</td>
+          <td>{{ fiche.activite }}</td>
+          <td>{{ fiche.btravail }}</td>
+          <td>{{ fiche.travail }}</td>
+          <td>{{ fiche.scolarise }}</td>
+          <td>{{ fiche.type_scolarise }}</td>
+          <td>{{ fiche.niveau_scolarisation }}</td>
+          <td>{{ fiche.cas_familiaux }}</td>
+          <td>{{ fiche.nbcasconfirme }}</td>
+          <td>{{ fiche.nbcassuspectes }}</td>
+          <td>{{ fiche.nbcasdecedes }}</td>
+          <td>{{ fiche.deces_en_bas_age }}</td>
+          <td>{{ fiche.nbcas_deces_age_bas }}</td>
+          <td>{{ fiche.circonstances_decouverte }}</td>
+          <td>{{ fiche.age_aux_premiers_symptomes }}</td>
+          <td>{{ fiche.an_age_premiers_symptomes }}</td>
+          <td>{{ fiche.mois_age_premiers_symptomes }}</td>
+          <td>{{ fiche.jours_premiers_symptomes }}</td>
+          <td>{{ fiche.age_premiere_consultation }}</td>
+          <td>{{ fiche.an_age_premiere_consultation }}</td>
+          <td>{{ fiche.mois_age_premiere_consultation }}</td>
+          <td>{{ fiche.jours_premiere_consultation }}</td>
+          <td>{{ fiche.date_derniere_evaluation | formatMediumDate }}</td>
+          <td>{{ fiche.date_diagnostic | formatMediumDate }}</td>
+          <td>{{ fiche.handicap_mental }}</td>
+          <td>{{ fiche.qi }}</td>
+          <td>{{ fiche.handicap_moteur }}</td>
+          <td>{{ fiche.hadicap_moteur_grade }}</td>
+          <td>{{ fiche.deficit_neurosensoriel }}</td>
+          <td>{{ fiche.deficit_neurosensoriel_val }}</td>
+          <td>{{ fiche.deficience_psychique }}</td>
+          <td>{{ fiche.deficience_psychique_val }}</td>
+          <td>{{ fiche.autre_deficience_psychique }}</td>
+          <td>{{ fiche.regime }}</td>
+          <td>{{ fiche.regime_val }}</td>
+          <td>{{ fiche.medicament_specifique }}</td>
+          <td>{{ fiche.medicament_specifique_val }}</td>
+          <td>{{ fiche.autre_medicament_specifique }}</td>
+          <td>{{ fiche.vitamines }}</td>
+          <td>{{ fiche.vitamines_val }}</td>
+          <td>{{ fiche.greffehepatique }}</td>
+          <td>{{ fiche.reeducation_fonctionnelle }}</td>
+          <td>{{ fiche.appareillage }}</td>
+          <td>{{ fiche.psuchologie }}</td>
+          <td>{{ fiche.ergotherapie }}</td>
+          <td>{{ fiche.depistage_post_natal_oriente }}</td>
+          <td>{{ fiche.echelle_depistage }}</td>
+          <td>{{ fiche.nombre_individus_depistes }}</td>
+          <td>{{ fiche.nouveaux_cas_depistes }}</td>
+          <td>{{ fiche.nombre_nouveaux_cas_depistes }}</td>
+          <td>{{ fiche.code_registre1_cas_depistes }}</td>
+          <td>{{ fiche.lien_parente1_cas_depistes }}</td>
+          <td>{{ fiche.autre_lien_parente1 }}</td>
+          <td>{{ fiche.code_registre2_cas_depistes }}</td>
+          <td>{{ fiche.lien_parente2_cas_depistes }}</td>
+          <td>{{ fiche.autre_lien_parente2 }}</td>
+          <td>{{ fiche.nombre_de_grossesse_ulterieures }}</td>
+          <td>{{ fiche.nomre_DPN }}</td>
+          <td>{{ fiche.nombre_nouveaux_cas_diagnostiques }}</td>
+          <td>{{ fiche.nombre_ITG }}</td>
+          <td>{{ fiche.nomre_de_grossesses_poursuivies }}</td>
+          <td>{{ fiche.nombre_de_foetus_sains }}</td>
+          <td>
+            <div *ngIf="fiche.pathologie">
+              <a [routerLink]="['/pathologie', fiche.pathologie.id, 'view']">{{ fiche.pathologie.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/fiche', fiche.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/fiche', fiche.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(fiche)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="fiches && fiches.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [page]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

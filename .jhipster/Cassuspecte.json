@@ -1,0 +1,137 @@
+{
+  "changelogDate": "20230718120342",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "lienparente",
+      "fieldType": "elienparente",
+      "fieldValues": "FRERE_SOEUR,PERE_MERE,ONCLE_TANTE,NEVEU_NIECE,COUSIN_COUSINE,AUTRE,NP"
+    },
+    {
+      "fieldName": "lienparenteautre",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "signes_neurologiques",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "troubles_de_la_conscience",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "retard_psychomoteur",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "retard_mental",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "signes_du_spectre_autistique",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "epilepsie",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "crise_pseudoporphyrique",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "autres_signes_neurologiques",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "signes_hepatiques",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "ictere",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "ballonnement",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "syndrome_hemorragique",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "autres_signes_hepatiques",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "signes_osseux",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "signes_de_rachitisme",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "autre_signes_osseux",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "manifestations_thrombotiques",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "cerebrale",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "autre_manifestations_thrombotiques",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "manifestations_ophtalmologiques",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "luxation",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "ectopie_cristalinienne",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "cataracte",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "glaucome",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "myopie",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "manifestations_ophtalmologiques_autre",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "autre_criteres",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "str_autres_criteres",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "critere_non_precise",
+      "fieldType": "Boolean"
+    }
+  ],
+  "jpaMetamodelFiltering": false,
+  "name": "Cassuspecte",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceClass"
+}

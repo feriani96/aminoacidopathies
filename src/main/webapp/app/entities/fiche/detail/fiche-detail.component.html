@@ -1,0 +1,350 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="fiche">
+      <h2 data-cy="ficheDetailsHeading"><span>Fiche</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ fiche.id }}</span>
+        </dd>
+        <dt><span>Datemaj</span></dt>
+        <dd>
+          <span>{{ fiche.datemaj | formatMediumDate }}</span>
+        </dd>
+        <dt><span>Type Observation</span></dt>
+        <dd>
+          <span>{{ fiche.type_observation }}</span>
+        </dd>
+        <dt><span>Identifiant Registre</span></dt>
+        <dd>
+          <span>{{ fiche.identifiant_registre }}</span>
+        </dd>
+        <dt><span>Date Enregistrement</span></dt>
+        <dd>
+          <span>{{ fiche.date_enregistrement | formatMediumDate }}</span>
+        </dd>
+        <dt><span>Sexe</span></dt>
+        <dd>
+          <span>{{ fiche.sexe }}</span>
+        </dd>
+        <dt><span>Date Naissance</span></dt>
+        <dd>
+          <span>{{ fiche.date_naissance | formatMediumDate }}</span>
+        </dd>
+        <dt><span>Statut</span></dt>
+        <dd>
+          <span>{{ fiche.statut }}</span>
+        </dd>
+        <dt><span>Date Deces</span></dt>
+        <dd>
+          <span>{{ fiche.date_deces | formatMediumDate }}</span>
+        </dd>
+        <dt><span>Circonstance Deces</span></dt>
+        <dd>
+          <span>{{ fiche.circonstance_deces }}</span>
+        </dd>
+        <dt><span>Autre Circonstance Deces</span></dt>
+        <dd>
+          <span>{{ fiche.autre_circonstance_deces }}</span>
+        </dd>
+        <dt><span>Lieu Deces</span></dt>
+        <dd>
+          <span>{{ fiche.lieu_deces }}</span>
+        </dd>
+        <dt><span>Consanguinite</span></dt>
+        <dd>
+          <span>{{ fiche.consanguinite }}</span>
+        </dd>
+        <dt><span>Origine Geo Pere Gouvernorat</span></dt>
+        <dd>
+          <span>{{ fiche.origine_geo_pere_gouvernorat }}</span>
+        </dd>
+        <dt><span>Origine Geo Mere Gouvernorat</span></dt>
+        <dd>
+          <span>{{ fiche.origine_geo_mere_gouvernorat }}</span>
+        </dd>
+        <dt><span>Origine Geo Pere Deleguation</span></dt>
+        <dd>
+          <span>{{ fiche.origine_geo_pere_deleguation }}</span>
+        </dd>
+        <dt><span>Origine Geo Mere Deleguation</span></dt>
+        <dd>
+          <span>{{ fiche.origine_geo_mere_deleguation }}</span>
+        </dd>
+        <dt><span>Couverture Sociale</span></dt>
+        <dd>
+          <span>{{ fiche.couverture_sociale }}</span>
+        </dd>
+        <dt><span>Autre Couverture Sociale</span></dt>
+        <dd>
+          <span>{{ fiche.autre_couverture_sociale }}</span>
+        </dd>
+        <dt><span>Activite</span></dt>
+        <dd>
+          <span>{{ fiche.activite }}</span>
+        </dd>
+        <dt><span>Btravail</span></dt>
+        <dd>
+          <span>{{ fiche.btravail }}</span>
+        </dd>
+        <dt><span>Travail</span></dt>
+        <dd>
+          <span>{{ fiche.travail }}</span>
+        </dd>
+        <dt><span>Scolarise</span></dt>
+        <dd>
+          <span>{{ fiche.scolarise }}</span>
+        </dd>
+        <dt><span>Type Scolarise</span></dt>
+        <dd>
+          <span>{{ fiche.type_scolarise }}</span>
+        </dd>
+        <dt><span>Niveau Scolarisation</span></dt>
+        <dd>
+          <span>{{ fiche.niveau_scolarisation }}</span>
+        </dd>
+        <dt><span>Cas Familiaux</span></dt>
+        <dd>
+          <span>{{ fiche.cas_familiaux }}</span>
+        </dd>
+        <dt><span>Nbcasconfirme</span></dt>
+        <dd>
+          <span>{{ fiche.nbcasconfirme }}</span>
+        </dd>
+        <dt><span>Nbcassuspectes</span></dt>
+        <dd>
+          <span>{{ fiche.nbcassuspectes }}</span>
+        </dd>
+        <dt><span>Nbcasdecedes</span></dt>
+        <dd>
+          <span>{{ fiche.nbcasdecedes }}</span>
+        </dd>
+        <dt><span>Deces En Bas Age</span></dt>
+        <dd>
+          <span>{{ fiche.deces_en_bas_age }}</span>
+        </dd>
+        <dt><span>Nbcas Deces Age Bas</span></dt>
+        <dd>
+          <span>{{ fiche.nbcas_deces_age_bas }}</span>
+        </dd>
+        <dt><span>Circonstances Decouverte</span></dt>
+        <dd>
+          <span>{{ fiche.circonstances_decouverte }}</span>
+        </dd>
+        <dt><span>Age Aux Premiers Symptomes</span></dt>
+        <dd>
+          <span>{{ fiche.age_aux_premiers_symptomes }}</span>
+        </dd>
+        <dt><span>An Age Premiers Symptomes</span></dt>
+        <dd>
+          <span>{{ fiche.an_age_premiers_symptomes }}</span>
+        </dd>
+        <dt><span>Mois Age Premiers Symptomes</span></dt>
+        <dd>
+          <span>{{ fiche.mois_age_premiers_symptomes }}</span>
+        </dd>
+        <dt><span>Jours Premiers Symptomes</span></dt>
+        <dd>
+          <span>{{ fiche.jours_premiers_symptomes }}</span>
+        </dd>
+        <dt><span>Age Premiere Consultation</span></dt>
+        <dd>
+          <span>{{ fiche.age_premiere_consultation }}</span>
+        </dd>
+        <dt><span>An Age Premiere Consultation</span></dt>
+        <dd>
+          <span>{{ fiche.an_age_premiere_consultation }}</span>
+        </dd>
+        <dt><span>Mois Age Premiere Consultation</span></dt>
+        <dd>
+          <span>{{ fiche.mois_age_premiere_consultation }}</span>
+        </dd>
+        <dt><span>Jours Premiere Consultation</span></dt>
+        <dd>
+          <span>{{ fiche.jours_premiere_consultation }}</span>
+        </dd>
+        <dt><span>Date Derniere Evaluation</span></dt>
+        <dd>
+          <span>{{ fiche.date_derniere_evaluation | formatMediumDate }}</span>
+        </dd>
+        <dt><span>Date Diagnostic</span></dt>
+        <dd>
+          <span>{{ fiche.date_diagnostic | formatMediumDate }}</span>
+        </dd>
+        <dt><span>Handicap Mental</span></dt>
+        <dd>
+          <span>{{ fiche.handicap_mental }}</span>
+        </dd>
+        <dt><span>Qi</span></dt>
+        <dd>
+          <span>{{ fiche.qi }}</span>
+        </dd>
+        <dt><span>Handicap Moteur</span></dt>
+        <dd>
+          <span>{{ fiche.handicap_moteur }}</span>
+        </dd>
+        <dt><span>Hadicap Moteur Grade</span></dt>
+        <dd>
+          <span>{{ fiche.hadicap_moteur_grade }}</span>
+        </dd>
+        <dt><span>Deficit Neurosensoriel</span></dt>
+        <dd>
+          <span>{{ fiche.deficit_neurosensoriel }}</span>
+        </dd>
+        <dt><span>Deficit Neurosensoriel Val</span></dt>
+        <dd>
+          <span>{{ fiche.deficit_neurosensoriel_val }}</span>
+        </dd>
+        <dt><span>Deficience Psychique</span></dt>
+        <dd>
+          <span>{{ fiche.deficience_psychique }}</span>
+        </dd>
+        <dt><span>Deficience Psychique Val</span></dt>
+        <dd>
+          <span>{{ fiche.deficience_psychique_val }}</span>
+        </dd>
+        <dt><span>Autre Deficience Psychique</span></dt>
+        <dd>
+          <span>{{ fiche.autre_deficience_psychique }}</span>
+        </dd>
+        <dt><span>Regime</span></dt>
+        <dd>
+          <span>{{ fiche.regime }}</span>
+        </dd>
+        <dt><span>Regime Val</span></dt>
+        <dd>
+          <span>{{ fiche.regime_val }}</span>
+        </dd>
+        <dt><span>Medicament Specifique</span></dt>
+        <dd>
+          <span>{{ fiche.medicament_specifique }}</span>
+        </dd>
+        <dt><span>Medicament Specifique Val</span></dt>
+        <dd>
+          <span>{{ fiche.medicament_specifique_val }}</span>
+        </dd>
+        <dt><span>Autre Medicament Specifique</span></dt>
+        <dd>
+          <span>{{ fiche.autre_medicament_specifique }}</span>
+        </dd>
+        <dt><span>Vitamines</span></dt>
+        <dd>
+          <span>{{ fiche.vitamines }}</span>
+        </dd>
+        <dt><span>Vitamines Val</span></dt>
+        <dd>
+          <span>{{ fiche.vitamines_val }}</span>
+        </dd>
+        <dt><span>Greffehepatique</span></dt>
+        <dd>
+          <span>{{ fiche.greffehepatique }}</span>
+        </dd>
+        <dt><span>Reeducation Fonctionnelle</span></dt>
+        <dd>
+          <span>{{ fiche.reeducation_fonctionnelle }}</span>
+        </dd>
+        <dt><span>Appareillage</span></dt>
+        <dd>
+          <span>{{ fiche.appareillage }}</span>
+        </dd>
+        <dt><span>Psuchologie</span></dt>
+        <dd>
+          <span>{{ fiche.psuchologie }}</span>
+        </dd>
+        <dt><span>Ergotherapie</span></dt>
+        <dd>
+          <span>{{ fiche.ergotherapie }}</span>
+        </dd>
+        <dt><span>Depistage Post Natal Oriente</span></dt>
+        <dd>
+          <span>{{ fiche.depistage_post_natal_oriente }}</span>
+        </dd>
+        <dt><span>Echelle Depistage</span></dt>
+        <dd>
+          <span>{{ fiche.echelle_depistage }}</span>
+        </dd>
+        <dt><span>Nombre Individus Depistes</span></dt>
+        <dd>
+          <span>{{ fiche.nombre_individus_depistes }}</span>
+        </dd>
+        <dt><span>Nouveaux Cas Depistes</span></dt>
+        <dd>
+          <span>{{ fiche.nouveaux_cas_depistes }}</span>
+        </dd>
+        <dt><span>Nombre Nouveaux Cas Depistes</span></dt>
+        <dd>
+          <span>{{ fiche.nombre_nouveaux_cas_depistes }}</span>
+        </dd>
+        <dt><span>Code Registre 1 Cas Depistes</span></dt>
+        <dd>
+          <span>{{ fiche.code_registre1_cas_depistes }}</span>
+        </dd>
+        <dt><span>Lien Parente 1 Cas Depistes</span></dt>
+        <dd>
+          <span>{{ fiche.lien_parente1_cas_depistes }}</span>
+        </dd>
+        <dt><span>Autre Lien Parente 1</span></dt>
+        <dd>
+          <span>{{ fiche.autre_lien_parente1 }}</span>
+        </dd>
+        <dt><span>Code Registre 2 Cas Depistes</span></dt>
+        <dd>
+          <span>{{ fiche.code_registre2_cas_depistes }}</span>
+        </dd>
+        <dt><span>Lien Parente 2 Cas Depistes</span></dt>
+        <dd>
+          <span>{{ fiche.lien_parente2_cas_depistes }}</span>
+        </dd>
+        <dt><span>Autre Lien Parente 2</span></dt>
+        <dd>
+          <span>{{ fiche.autre_lien_parente2 }}</span>
+        </dd>
+        <dt><span>Nombre De Grossesse Ulterieures</span></dt>
+        <dd>
+          <span>{{ fiche.nombre_de_grossesse_ulterieures }}</span>
+        </dd>
+        <dt><span>Nomre DPN</span></dt>
+        <dd>
+          <span>{{ fiche.nomre_DPN }}</span>
+        </dd>
+        <dt><span>Nombre Nouveaux Cas Diagnostiques</span></dt>
+        <dd>
+          <span>{{ fiche.nombre_nouveaux_cas_diagnostiques }}</span>
+        </dd>
+        <dt><span>Nombre ITG</span></dt>
+        <dd>
+          <span>{{ fiche.nombre_ITG }}</span>
+        </dd>
+        <dt><span>Nomre De Grossesses Poursuivies</span></dt>
+        <dd>
+          <span>{{ fiche.nomre_de_grossesses_poursuivies }}</span>
+        </dd>
+        <dt><span>Nombre De Foetus Sains</span></dt>
+        <dd>
+          <span>{{ fiche.nombre_de_foetus_sains }}</span>
+        </dd>
+        <dt><span>Pathologie</span></dt>
+        <dd>
+          <div *ngIf="fiche.pathologie">
+            <a [routerLink]="['/pathologie', fiche.pathologie.id, 'view']">{{ fiche.pathologie.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/fiche', fiche.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

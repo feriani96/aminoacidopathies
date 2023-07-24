@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="structurefiche">
+      <h2 data-cy="structureficheDetailsHeading"><span>Structurefiche</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ structurefiche.id }}</span>
+        </dd>
+        <dt><span>Typestructure</span></dt>
+        <dd>
+          <span>{{ structurefiche.typestructure }}</span>
+        </dd>
+        <dt><span>Ordre</span></dt>
+        <dd>
+          <span>{{ structurefiche.ordre }}</span>
+        </dd>
+        <dt><span>Etablissement</span></dt>
+        <dd>
+          <div *ngIf="structurefiche.etablissement">
+            <a [routerLink]="['/etablissement', structurefiche.etablissement.id, 'view']">{{ structurefiche.etablissement.id }}</a>
+          </div>
+        </dd>
+        <dt><span>Servicesante</span></dt>
+        <dd>
+          <div *ngIf="structurefiche.servicesante">
+            <a [routerLink]="['/servicesante', structurefiche.servicesante.id, 'view']">{{ structurefiche.servicesante.id }}</a>
+          </div>
+        </dd>
+        <dt><span>Medecin</span></dt>
+        <dd>
+          <div *ngIf="structurefiche.medecin">
+            <a [routerLink]="['/medecin', structurefiche.medecin.id, 'view']">{{ structurefiche.medecin.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/structurefiche', structurefiche.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

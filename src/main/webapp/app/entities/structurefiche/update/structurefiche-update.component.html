@@ -1,0 +1,118 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-structurefiche-heading" data-cy="StructureficheCreateUpdateHeading">Create or edit a Structurefiche</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_typestructure">Typestructure</label>
+          <select
+            class="form-control"
+            name="typestructure"
+            formControlName="typestructure"
+            id="field_typestructure"
+            data-cy="typestructure"
+          >
+            <option [ngValue]="null"></option>
+            <option *ngFor="let etypestructure of etypestructureValues" [value]="etypestructure">etypestructure</option>
+          </select>
+          <div
+            *ngIf="
+              editForm.get('typestructure')!.invalid && (editForm.get('typestructure')!.dirty || editForm.get('typestructure')!.touched)
+            "
+          >
+            <small class="form-text text-danger" *ngIf="editForm.get('typestructure')?.errors?.required"> This field is required. </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_ordre">Ordre</label>
+          <input type="number" class="form-control" name="ordre" id="field_ordre" data-cy="ordre" formControlName="ordre" />
+          <div *ngIf="editForm.get('ordre')!.invalid && (editForm.get('ordre')!.dirty || editForm.get('ordre')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('ordre')?.errors?.required"> This field is required. </small>
+            <small class="form-text text-danger" [hidden]="!editForm.get('ordre')?.errors?.number"> This field should be a number. </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_etablissement">Etablissement</label>
+          <select
+            class="form-control"
+            id="field_etablissement"
+            data-cy="etablissement"
+            name="etablissement"
+            formControlName="etablissement"
+            [compareWith]="compareEtablissement"
+          >
+            <option *ngIf="!editForm.get('etablissement')!.value" [ngValue]="null" selected></option>
+            <option [ngValue]="etablissementOption" *ngFor="let etablissementOption of etablissementsSharedCollection">
+              {{ etablissementOption.id }}
+            </option>
+          </select>
+        </div>
+        <div
+          *ngIf="
+            editForm.get(['etablissement'])!.invalid && (editForm.get(['etablissement'])!.dirty || editForm.get(['etablissement'])!.touched)
+          "
+        >
+          <small class="form-text text-danger" *ngIf="editForm.get(['etablissement'])?.errors?.required"> This field is required. </small>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_servicesante">Servicesante</label>
+          <select
+            class="form-control"
+            id="field_servicesante"
+            data-cy="servicesante"
+            name="servicesante"
+            formControlName="servicesante"
+            [compareWith]="compareServicesante"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="servicesanteOption" *ngFor="let servicesanteOption of servicesantesSharedCollection">
+              {{ servicesanteOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_medecin">Medecin</label>
+          <select
+            class="form-control"
+            id="field_medecin"
+            data-cy="medecin"
+            name="medecin"
+            formControlName="medecin"
+            [compareWith]="compareMedecin"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="medecinOption" *ngFor="let medecinOption of medecinsSharedCollection">{{ medecinOption.id }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

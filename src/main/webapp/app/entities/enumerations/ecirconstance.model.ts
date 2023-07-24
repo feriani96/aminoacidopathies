@@ -1,0 +1,11 @@
+export enum ecirconstance {
+  TBL_NEURO = 'TBL_NEURO',
+
+  TBL_HEMORRAGIQUE = 'TBL_HEMORRAGIQUE',
+
+  TBL_INFX = 'TBL_INFX',
+
+  NON_PRECISE = 'NON_PRECISE',
+
+  AUTRE = 'AUTRE',
+}

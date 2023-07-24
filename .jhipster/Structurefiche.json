@@ -1,0 +1,43 @@
+{
+  "changelogDate": "20230717201351",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "typestructure",
+      "fieldType": "etypestructure",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "ORIGINE,SUIVI"
+    },
+    {
+      "fieldName": "ordre",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "jpaMetamodelFiltering": false,
+  "name": "Structurefiche",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "id",
+      "otherEntityName": "etablissement",
+      "relationshipName": "etablissement",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": ["required"]
+    },
+    {
+      "otherEntityField": "id",
+      "otherEntityName": "servicesante",
+      "relationshipName": "servicesante",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "id",
+      "otherEntityName": "medecin",
+      "relationshipName": "medecin",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

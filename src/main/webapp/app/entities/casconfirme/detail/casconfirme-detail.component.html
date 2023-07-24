@@ -1,0 +1,42 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="casconfirme">
+      <h2 data-cy="casconfirmeDetailsHeading"><span>Casconfirme</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ casconfirme.id }}</span>
+        </dd>
+        <dt><span>Code Registre</span></dt>
+        <dd>
+          <span>{{ casconfirme.code_registre }}</span>
+        </dd>
+        <dt><span>Lien Parente</span></dt>
+        <dd>
+          <span>{{ casconfirme.lien_parente }}</span>
+        </dd>
+        <dt><span>Fiche</span></dt>
+        <dd>
+          <div *ngIf="casconfirme.fiche">
+            <a [routerLink]="['/fiche', casconfirme.fiche.id, 'view']">{{ casconfirme.fiche.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/casconfirme', casconfirme.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

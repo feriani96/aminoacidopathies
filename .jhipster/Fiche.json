@@ -1,0 +1,384 @@
+{
+  "changelogDate": "20230716183343",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "datemaj",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "type_observation",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "identifiant_registre",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "date_enregistrement",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "sexe",
+      "fieldType": "esexe",
+      "fieldValues": "M,F,INDETERMINE"
+    },
+    {
+      "fieldName": "date_naissance",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "statut",
+      "fieldType": "estatut",
+      "fieldValues": "ENCORE_SUIVI,DECEDE,PERDU_DE_VUE,INTERRUPTION_DE_GROSSESSE"
+    },
+    {
+      "fieldName": "date_deces",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "circonstance_deces",
+      "fieldType": "ecirconstance",
+      "fieldValues": "TBL_NEURO,TBL_HEMORRAGIQUE,TBL_INFX,NON_PRECISE,AUTRE"
+    },
+    {
+      "fieldName": "autre_circonstance_deces",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lieu_deces",
+      "fieldType": "elieudeces",
+      "fieldValues": "DOMICILE,STRUCTURE_SANTE_PUBLIQUE"
+    },
+    {
+      "fieldName": "consanguinite",
+      "fieldType": "econsanguinite",
+      "fieldValues": "OUI,NON,NP"
+    },
+    {
+      "fieldName": "origine_geo_pere_gouvernorat",
+      "fieldType": "egouvernorat",
+      "fieldValues": "ARIANA,BEJA,BENAROUS,BIZERTE,GABES,GAFSA,JENDOUBA,KAIROUAN,KASSERINE,KEBIL,KEF,MAHDIA,MANOUBA,MEDENINE,MONASTIR,NABEUL,SFAX,SIDIBOUZID,SILIANA,SOUSSE,TATAOUINE,TOZEUR,TUNIS,ZAGHOUAN"
+    },
+    {
+      "fieldName": "origine_geo_mere_gouvernorat",
+      "fieldType": "egouvernoratmere",
+      "fieldValues": "ARIANA,BEJA,BENAROUS,BIZERTE,GABES,GAFSA,JENDOUBA,KAIROUAN,KASSERINE,KEBIL,KEF,MAHDIA,MANOUBA,MEDENINE,MONASTIR,NABEUL,SFAX,SIDIBOUZID,SILIANA,SOUSSE,TATAOUINE,TOZEUR,TUNIS,ZAGHOUAN,NP"
+    },
+    {
+      "fieldName": "origine_geo_pere_deleguation",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "origine_geo_mere_deleguation",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "couverture_sociale",
+      "fieldType": "ecouverture",
+      "fieldValues": "AUCUNE,CNAM,TARIF_REDUIT,INDIGENT,REGIME_MILITAIRE,AUTRE"
+    },
+    {
+      "fieldName": "autre_couverture_sociale",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "activite",
+      "fieldType": "eactivite",
+      "fieldValues": "NP,NON,NA,OUI"
+    },
+    {
+      "fieldName": "btravail",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "travail",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "scolarise",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "type_scolarise",
+      "fieldType": "escolarisetype",
+      "fieldValues": "ECOLE_NORMALE,ECOLE_INTEGRATION,CENTRE_SPECIALISE,AUTRE,NP"
+    },
+    {
+      "fieldName": "niveau_scolarisation",
+      "fieldType": "eniveauscolarisation",
+      "fieldValues": "PRIMAIRE,COLLEGE,SECONDAIRE,SUPERIEUR"
+    },
+    {
+      "fieldName": "cas_familiaux",
+      "fieldType": "ecasfamiliaux",
+      "fieldValues": "OUI,NON,NP"
+    },
+    {
+      "fieldName": "nbcasconfirme",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "nbcassuspectes",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "nbcasdecedes",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "deces_en_bas_age",
+      "fieldType": "edecesbasage",
+      "fieldValues": "OUI,NON,NP"
+    },
+    {
+      "fieldName": "nbcas_deces_age_bas",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "circonstances_decouverte",
+      "fieldType": "ecircondecouverte",
+      "fieldValues": "SYMPTOMATIQUE,DIAGNOSTIC_PRENATAL,ENQUETE_FAMILIALE,FORTUITE,DEPISTAGE"
+    },
+    {
+      "fieldName": "age_aux_premiers_symptomes",
+      "fieldType": "eage_premier_symptome",
+      "fieldValues": "NON_CONNU,CONNU"
+    },
+    {
+      "fieldName": "an_age_premiers_symptomes",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "mois_age_premiers_symptomes",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "jours_premiers_symptomes",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "age_premiere_consultation",
+      "fieldType": "eagepremiereconsultation",
+      "fieldValues": "NON_CONNU,CONNU"
+    },
+    {
+      "fieldName": "an_age_premiere_consultation",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "mois_age_premiere_consultation",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "jours_premiere_consultation",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "date_derniere_evaluation",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "date_diagnostic",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "handicap_mental",
+      "fieldType": "ehandicapmental",
+      "fieldValues": "NP,OUI,NON"
+    },
+    {
+      "fieldName": "qi",
+      "fieldType": "eQI",
+      "fieldValues": "NON_EVALUE,QI_50_69,QI_35_49,QI_20_34,INFERIEUR_20"
+    },
+    {
+      "fieldName": "handicap_moteur",
+      "fieldType": "eMoteur",
+      "fieldValues": "NP,NON,OUI"
+    },
+    {
+      "fieldName": "hadicap_moteur_grade",
+      "fieldType": "egrade",
+      "fieldValues": "LEGER,MOYEN,GRAND,TRESGRAND"
+    },
+    {
+      "fieldName": "deficit_neurosensoriel",
+      "fieldType": "edeficitneuro",
+      "fieldValues": "NON,OUI,NP"
+    },
+    {
+      "fieldName": "deficit_neurosensoriel_val",
+      "fieldType": "edeficitneurosensorielval",
+      "fieldValues": "AUDITIF,VISUEL,NP"
+    },
+    {
+      "fieldName": "deficience_psychique",
+      "fieldType": "edeficiencepsychique",
+      "fieldValues": "OUI,NON,NP"
+    },
+    {
+      "fieldName": "deficience_psychique_val",
+      "fieldType": "edeficiencepsychiqueval",
+      "fieldValues": "TROUBLES_COMMUNICATION_LANGUAGE,TROUBLES_COMPORTEMENT,TROUBLES_HUMEUR,AUTRE,NP"
+    },
+    {
+      "fieldName": "autre_deficience_psychique",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "regime",
+      "fieldType": "eregime",
+      "fieldValues": "OUI,NON,NP"
+    },
+    {
+      "fieldName": "regime_val",
+      "fieldType": "eregimeval",
+      "fieldValues": "HYPOPROTIDIQUE,CONTROLE_EN_ACIDE_AMINE,NP"
+    },
+    {
+      "fieldName": "medicament_specifique",
+      "fieldType": "emedicamentspecifique",
+      "fieldValues": "OUI,NON,NP"
+    },
+    {
+      "fieldName": "medicament_specifique_val",
+      "fieldType": "emedicamentspecifiqueval",
+      "fieldValues": "NTBC_NITISIN_ORFADIN,CITRATEDEBETAINE_CYSTADANE,BH4DICHLORYDRATEDESAPROPTERINE_JUVAN,AUTRE"
+    },
+    {
+      "fieldName": "autre_medicament_specifique",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "vitamines",
+      "fieldType": "evitamines",
+      "fieldValues": "OUI,NON,NP"
+    },
+    {
+      "fieldName": "vitamines_val",
+      "fieldType": "evitamineval",
+      "fieldValues": "VITAMINEB1_THIAMINE,VITAMINEB6_PYRIDOXINE,VITAMINEB9_ACIDEFOLIQUE,VITAMINEB12_COBALAMINE,VITAMINEC_ACIDEASCORBIQUE,NP"
+    },
+    {
+      "fieldName": "greffehepatique",
+      "fieldType": "egreffehepatique",
+      "fieldValues": "OUI,NON,NP"
+    },
+    {
+      "fieldName": "reeducation_fonctionnelle",
+      "fieldType": "erededucationfonctionnelle",
+      "fieldValues": "OUI,NON,NP"
+    },
+    {
+      "fieldName": "appareillage",
+      "fieldType": "eappareillage",
+      "fieldValues": "OUI,NON,NP"
+    },
+    {
+      "fieldName": "psuchologie",
+      "fieldType": "epsychologie",
+      "fieldValues": "OUI,NON,NP"
+    },
+    {
+      "fieldName": "ergotherapie",
+      "fieldType": "eergotherapie",
+      "fieldValues": "OUI,NON,NP"
+    },
+    {
+      "fieldName": "depistage_post_natal_oriente",
+      "fieldType": "edepistage_post_natal_oriente",
+      "fieldValues": "OUI,NON,NP"
+    },
+    {
+      "fieldName": "echelle_depistage",
+      "fieldType": "eechelledepistage",
+      "fieldValues": "FAMILLE_NUCLEAIRE,AU_DELA,NP"
+    },
+    {
+      "fieldName": "nombre_individus_depistes",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "nouveaux_cas_depistes",
+      "fieldType": "enouveaux_cas_depistes",
+      "fieldValues": "OUI,NON,EN_COURS,NP"
+    },
+    {
+      "fieldName": "nombre_nouveaux_cas_depistes",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "code_registre1_cas_depistes",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lien_parente1_cas_depistes",
+      "fieldType": "elienparente1",
+      "fieldValues": "FRATERIE,COUSINS,AUTRE"
+    },
+    {
+      "fieldName": "autre_lien_parente1",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "code_registre2_cas_depistes",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lien_parente2_cas_depistes",
+      "fieldType": "elienparente2",
+      "fieldValues": "FRATERIE,COUSINS,AUTRE"
+    },
+    {
+      "fieldName": "autre_lien_parente2",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nombre_de_grossesse_ulterieures",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "nomre_DPN",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "nombre_nouveaux_cas_diagnostiques",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "nombre_ITG",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "nomre_de_grossesses_poursuivies",
+      "fieldType": "Integer",
+      "fieldValidateRules": []
+    },
+    {
+      "fieldName": "nombre_de_foetus_sains",
+      "fieldType": "Integer"
+    }
+  ],
+  "jpaMetamodelFiltering": false,
+  "name": "Fiche",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "id",
+      "otherEntityName": "pathologie",
+      "relationshipName": "pathologie",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": ["required"]
+    },
+    {
+      "otherEntityName": "casconfirme",
+      "otherEntityRelationshipName": "fiche",
+      "relationshipName": "casconfirme",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

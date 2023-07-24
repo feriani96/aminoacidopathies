@@ -1,0 +1,32 @@
+{
+  "changelogDate": "20230720082308",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "ename",
+      "fieldValues": "BRANDT,BARBER,DNPH,PHENISTIX,ALPHAFOETOPROTEINE,DOSAGEPHESURPAPIER,CAAPLASMATIQUE,CAAURINAIRE,CAOURINAIRE,SUCCINYLACETONEURINAIRE,SUCCINYLACETONESURPAPIERGUTHRIE,DOSAGEHOMOCYSTEINEPLASMATIQUE,DOSAGEENZYMATIQUE,BIOLOGIEMOLECULAIRE"
+    },
+    {
+      "fieldName": "fait",
+      "fieldType": "efait",
+      "fieldValues": "NF,NP,NA,FAIT"
+    },
+    {
+      "fieldName": "laboratoire",
+      "fieldType": "elaboratoire",
+      "fieldValues": "BIOCHIMIERABTA,BIOCHIMIESOUSSE_FHACHED,BIOCHIMIESFAX,LABORATOIREPRIVE,LABORATOIREETRANGER"
+    },
+    {
+      "fieldName": "resultat",
+      "fieldType": "eResultat",
+      "fieldValues": "PATHOLOGIQUE,NORMAL,NON_CONCLUANT,EN_COURS"
+    }
+  ],
+  "jpaMetamodelFiltering": false,
+  "name": "Metabolique",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceClass"
+}

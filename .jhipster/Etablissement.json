@@ -1,0 +1,24 @@
+{
+  "changelogDate": "20230716165037",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["unique"]
+    }
+  ],
+  "jpaMetamodelFiltering": false,
+  "name": "Etablissement",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "id",
+      "otherEntityName": "structuresante",
+      "relationshipName": "structuresante",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

@@ -1,0 +1,74 @@
+{
+  "changelogDate": "20230720054229",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "confirme",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "code_registre",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "suspecte",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "lien_de_parente",
+      "fieldType": "elienparente",
+      "fieldValues": "FRERE_SOEUR,PERE_MERE,ONCLE_TANTE,NEVEU_NIECE,COUSIN_COUSINE,AUTRE,NP"
+    },
+    {
+      "fieldName": "autre_lien_parente",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "an_age_de_deces",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "mois_age_de_deces",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "jours_age_de_deces",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "tbl_neuro",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "tbl_hemorragique",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "tbl_infx",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "autre_circonstances_deces",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "bautre_circonstance_deces",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "np_circonstances_deces",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "lieu_deces",
+      "fieldType": "elieudeces",
+      "fieldValues": "DOMICILE,STRUCTURE_SANTE_PUBLIQUE,NP"
+    }
+  ],
+  "jpaMetamodelFiltering": false,
+  "name": "Casdecesbasage",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceClass"
+}

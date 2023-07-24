@@ -1,0 +1,351 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-cassuspecte-heading" data-cy="CassuspecteCreateUpdateHeading">Create or edit a Cassuspecte</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_lienparente">Lienparente</label>
+          <select class="form-control" name="lienparente" formControlName="lienparente" id="field_lienparente" data-cy="lienparente">
+            <option [ngValue]="null"></option>
+            <option *ngFor="let elienparente of elienparenteValues" [value]="elienparente">elienparente</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_lienparenteautre">Lienparenteautre</label>
+          <input
+            type="text"
+            class="form-control"
+            name="lienparenteautre"
+            id="field_lienparenteautre"
+            data-cy="lienparenteautre"
+            formControlName="lienparenteautre"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_signes_neurologiques">Signes Neurologiques</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="signes_neurologiques"
+            id="field_signes_neurologiques"
+            data-cy="signes_neurologiques"
+            formControlName="signes_neurologiques"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_troubles_de_la_conscience">Troubles De La Conscience</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="troubles_de_la_conscience"
+            id="field_troubles_de_la_conscience"
+            data-cy="troubles_de_la_conscience"
+            formControlName="troubles_de_la_conscience"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_retard_psychomoteur">Retard Psychomoteur</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="retard_psychomoteur"
+            id="field_retard_psychomoteur"
+            data-cy="retard_psychomoteur"
+            formControlName="retard_psychomoteur"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_retard_mental">Retard Mental</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="retard_mental"
+            id="field_retard_mental"
+            data-cy="retard_mental"
+            formControlName="retard_mental"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_signes_du_spectre_autistique">Signes Du Spectre Autistique</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="signes_du_spectre_autistique"
+            id="field_signes_du_spectre_autistique"
+            data-cy="signes_du_spectre_autistique"
+            formControlName="signes_du_spectre_autistique"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_epilepsie">Epilepsie</label>
+          <input type="checkbox" class="form-check" name="epilepsie" id="field_epilepsie" data-cy="epilepsie" formControlName="epilepsie" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_crise_pseudoporphyrique">Crise Pseudoporphyrique</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="crise_pseudoporphyrique"
+            id="field_crise_pseudoporphyrique"
+            data-cy="crise_pseudoporphyrique"
+            formControlName="crise_pseudoporphyrique"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_autres_signes_neurologiques">Autres Signes Neurologiques</label>
+          <input
+            type="text"
+            class="form-control"
+            name="autres_signes_neurologiques"
+            id="field_autres_signes_neurologiques"
+            data-cy="autres_signes_neurologiques"
+            formControlName="autres_signes_neurologiques"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_signes_hepatiques">Signes Hepatiques</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="signes_hepatiques"
+            id="field_signes_hepatiques"
+            data-cy="signes_hepatiques"
+            formControlName="signes_hepatiques"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_ictere">Ictere</label>
+          <input type="checkbox" class="form-check" name="ictere" id="field_ictere" data-cy="ictere" formControlName="ictere" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_ballonnement">Ballonnement</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="ballonnement"
+            id="field_ballonnement"
+            data-cy="ballonnement"
+            formControlName="ballonnement"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_syndrome_hemorragique">Syndrome Hemorragique</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="syndrome_hemorragique"
+            id="field_syndrome_hemorragique"
+            data-cy="syndrome_hemorragique"
+            formControlName="syndrome_hemorragique"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_autres_signes_hepatiques">Autres Signes Hepatiques</label>
+          <input
+            type="text"
+            class="form-control"
+            name="autres_signes_hepatiques"
+            id="field_autres_signes_hepatiques"
+            data-cy="autres_signes_hepatiques"
+            formControlName="autres_signes_hepatiques"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_signes_osseux">Signes Osseux</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="signes_osseux"
+            id="field_signes_osseux"
+            data-cy="signes_osseux"
+            formControlName="signes_osseux"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_signes_de_rachitisme">Signes De Rachitisme</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="signes_de_rachitisme"
+            id="field_signes_de_rachitisme"
+            data-cy="signes_de_rachitisme"
+            formControlName="signes_de_rachitisme"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_autre_signes_osseux">Autre Signes Osseux</label>
+          <input
+            type="text"
+            class="form-control"
+            name="autre_signes_osseux"
+            id="field_autre_signes_osseux"
+            data-cy="autre_signes_osseux"
+            formControlName="autre_signes_osseux"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_manifestations_thrombotiques">Manifestations Thrombotiques</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="manifestations_thrombotiques"
+            id="field_manifestations_thrombotiques"
+            data-cy="manifestations_thrombotiques"
+            formControlName="manifestations_thrombotiques"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_cerebrale">Cerebrale</label>
+          <input type="checkbox" class="form-check" name="cerebrale" id="field_cerebrale" data-cy="cerebrale" formControlName="cerebrale" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_autre_manifestations_thrombotiques">Autre Manifestations Thrombotiques</label>
+          <input
+            type="text"
+            class="form-control"
+            name="autre_manifestations_thrombotiques"
+            id="field_autre_manifestations_thrombotiques"
+            data-cy="autre_manifestations_thrombotiques"
+            formControlName="autre_manifestations_thrombotiques"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_manifestations_ophtalmologiques">Manifestations Ophtalmologiques</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="manifestations_ophtalmologiques"
+            id="field_manifestations_ophtalmologiques"
+            data-cy="manifestations_ophtalmologiques"
+            formControlName="manifestations_ophtalmologiques"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_luxation">Luxation</label>
+          <input type="checkbox" class="form-check" name="luxation" id="field_luxation" data-cy="luxation" formControlName="luxation" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_ectopie_cristalinienne">Ectopie Cristalinienne</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="ectopie_cristalinienne"
+            id="field_ectopie_cristalinienne"
+            data-cy="ectopie_cristalinienne"
+            formControlName="ectopie_cristalinienne"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_cataracte">Cataracte</label>
+          <input type="checkbox" class="form-check" name="cataracte" id="field_cataracte" data-cy="cataracte" formControlName="cataracte" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_glaucome">Glaucome</label>
+          <input type="checkbox" class="form-check" name="glaucome" id="field_glaucome" data-cy="glaucome" formControlName="glaucome" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_myopie">Myopie</label>
+          <input type="checkbox" class="form-check" name="myopie" id="field_myopie" data-cy="myopie" formControlName="myopie" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_manifestations_ophtalmologiques_autre">Manifestations Ophtalmologiques Autre</label>
+          <input
+            type="text"
+            class="form-control"
+            name="manifestations_ophtalmologiques_autre"
+            id="field_manifestations_ophtalmologiques_autre"
+            data-cy="manifestations_ophtalmologiques_autre"
+            formControlName="manifestations_ophtalmologiques_autre"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_autre_criteres">Autre Criteres</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="autre_criteres"
+            id="field_autre_criteres"
+            data-cy="autre_criteres"
+            formControlName="autre_criteres"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_str_autres_criteres">Str Autres Criteres</label>
+          <input
+            type="text"
+            class="form-control"
+            name="str_autres_criteres"
+            id="field_str_autres_criteres"
+            data-cy="str_autres_criteres"
+            formControlName="str_autres_criteres"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_critere_non_precise">Critere Non Precise</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="critere_non_precise"
+            id="field_critere_non_precise"
+            data-cy="critere_non_precise"
+            formControlName="critere_non_precise"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

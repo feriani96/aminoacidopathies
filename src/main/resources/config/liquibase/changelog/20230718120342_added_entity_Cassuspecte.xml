@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity Cassuspecte.
+    -->
+    <changeSet id="20230718120342-1" author="jhipster">
+        <createTable tableName="cassuspecte">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="lienparente" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="lienparenteautre" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="signes_neurologiques" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="troubles_de_la_conscience" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="retard_psychomoteur" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="retard_mental" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="signes_du_spectre_autistique" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="epilepsie" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="crise_pseudoporphyrique" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="autres_signes_neurologiques" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="signes_hepatiques" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="ictere" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="ballonnement" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="syndrome_hemorragique" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="autres_signes_hepatiques" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="signes_osseux" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="signes_de_rachitisme" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="autre_signes_osseux" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="manifestations_thrombotiques" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="cerebrale" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="autre_manifestations_thrombotiques" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="manifestations_ophtalmologiques" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="luxation" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="ectopie_cristalinienne" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="cataracte" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="glaucome" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="myopie" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="manifestations_ophtalmologiques_autre" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="autre_criteres" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="str_autres_criteres" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="critere_non_precise" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+    </changeSet>
+
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="20230718120342-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/cassuspecte.csv"
+                  separator=";"
+                  tableName="cassuspecte"
+                  usePreparedStatements="true">
+            <column name="id" type="numeric"/>
+            <column name="lienparente" type="string"/>
+            <column name="lienparenteautre" type="string"/>
+            <column name="signes_neurologiques" type="boolean"/>
+            <column name="troubles_de_la_conscience" type="boolean"/>
+            <column name="retard_psychomoteur" type="boolean"/>
+            <column name="retard_mental" type="boolean"/>
+            <column name="signes_du_spectre_autistique" type="boolean"/>
+            <column name="epilepsie" type="boolean"/>
+            <column name="crise_pseudoporphyrique" type="boolean"/>
+            <column name="autres_signes_neurologiques" type="string"/>
+            <column name="signes_hepatiques" type="boolean"/>
+            <column name="ictere" type="boolean"/>
+            <column name="ballonnement" type="boolean"/>
+            <column name="syndrome_hemorragique" type="boolean"/>
+            <column name="autres_signes_hepatiques" type="string"/>
+            <column name="signes_osseux" type="boolean"/>
+            <column name="signes_de_rachitisme" type="boolean"/>
+            <column name="autre_signes_osseux" type="string"/>
+            <column name="manifestations_thrombotiques" type="boolean"/>
+            <column name="cerebrale" type="boolean"/>
+            <column name="autre_manifestations_thrombotiques" type="string"/>
+            <column name="manifestations_ophtalmologiques" type="boolean"/>
+            <column name="luxation" type="boolean"/>
+            <column name="ectopie_cristalinienne" type="boolean"/>
+            <column name="cataracte" type="boolean"/>
+            <column name="glaucome" type="boolean"/>
+            <column name="myopie" type="boolean"/>
+            <column name="manifestations_ophtalmologiques_autre" type="string"/>
+            <column name="autre_criteres" type="boolean"/>
+            <column name="str_autres_criteres" type="string"/>
+            <column name="critere_non_precise" type="boolean"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

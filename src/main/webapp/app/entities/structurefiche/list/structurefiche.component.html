@@ -1,0 +1,146 @@
+<div>
+  <h2 id="page-heading" data-cy="StructureficheHeading">
+    <span>Structurefiches</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-structurefiche"
+        [routerLink]="['/structurefiche/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span> Create a new Structurefiche </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="structurefiches?.length === 0">
+    <span>No Structurefiches found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="structurefiches && structurefiches.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span>ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="typestructure">
+            <div class="d-flex">
+              <span>Typestructure</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="ordre">
+            <div class="d-flex">
+              <span>Ordre</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="etablissement.id">
+            <div class="d-flex">
+              <span>Etablissement</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="servicesante.id">
+            <div class="d-flex">
+              <span>Servicesante</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="medecin.id">
+            <div class="d-flex">
+              <span>Medecin</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let structurefiche of structurefiches; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/structurefiche', structurefiche.id, 'view']">{{ structurefiche.id }}</a>
+          </td>
+          <td>{{ structurefiche.typestructure }}</td>
+          <td>{{ structurefiche.ordre }}</td>
+          <td>
+            <div *ngIf="structurefiche.etablissement">
+              <a [routerLink]="['/etablissement', structurefiche.etablissement.id, 'view']">{{ structurefiche.etablissement.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="structurefiche.servicesante">
+              <a [routerLink]="['/servicesante', structurefiche.servicesante.id, 'view']">{{ structurefiche.servicesante.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="structurefiche.medecin">
+              <a [routerLink]="['/medecin', structurefiche.medecin.id, 'view']">{{ structurefiche.medecin.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/structurefiche', structurefiche.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/structurefiche', structurefiche.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(structurefiche)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="structurefiches && structurefiches.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [page]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

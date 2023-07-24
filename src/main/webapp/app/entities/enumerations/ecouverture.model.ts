@@ -1,0 +1,13 @@
+export enum ecouverture {
+  AUCUNE = 'AUCUNE',
+
+  CNAM = 'CNAM',
+
+  TARIF_REDUIT = 'TARIF_REDUIT',
+
+  INDIGENT = 'INDIGENT',
+
+  REGIME_MILITAIRE = 'REGIME_MILITAIRE',
+
+  AUTRE = 'AUTRE',
+}
